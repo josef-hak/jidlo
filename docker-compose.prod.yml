@@ -10,7 +10,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u wordpress -p$$MYSQL_PASSWORD"]
       interval: 5s
       timeout: 3s
       retries: 10
