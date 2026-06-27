@@ -116,9 +116,9 @@
         <?php if ($has_donut):
             $o1 = 0;
             $o2 = $o1 + $p_bilk;
-            $o3 = $o2 + $p_tuky_rest;
-            $o4 = $o3 + $p_nmk;
-            $o5 = $o4 + $p_sach_rest;
+            $o3 = $o2 + $p_sach_rest;
+            $o4 = $o3 + $p_cukry;
+            $o5 = $o4 + $p_tuky_rest;
         ?>
         <div class="donut-section">
             <div class="donut-chart">
@@ -127,10 +127,10 @@
                     <?php
                     $segments = [
                         [$p_bilk,      '#e05555', $o1],
-                        [$p_tuky_rest, '#eebb44', $o2],
-                        [$p_nmk,       '#cc9922', $o3],
-                        [$p_sach_rest, '#5588dd', $o4],
-                        [$p_cukry,     '#2255aa', $o5],
+                        [$p_sach_rest, '#5588dd', $o2],
+                        [$p_cukry,     '#2255aa', $o3],
+                        [$p_tuky_rest, '#eebb44', $o4],
+                        [$p_nmk,       '#cc9922', $o5],
                     ];
                     foreach ($segments as $seg):
                         if ($seg[0] < 0.5) continue;
