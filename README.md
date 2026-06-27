@@ -19,13 +19,22 @@ nano .env  # vyplnit hesla
 docker compose -f docker-compose.prod.yml up -d
 ```
 
-WordPress běží na `172.17.0.1:8084` — v reverse proxy nasměrovat doménu na tento port.
+WordPress běží na `172.17.0.1:8084`.
+
+Ingress (Traefik + Let's Encrypt):
+
+```bash
+kubectl apply -f k8s/jidlo.yml
+```
+
+Vytvoří Service, Endpoints a Ingress pro `jidlo.jhak.cz` s automatickým TLS certifikátem.
 
 ## Struktura
 
 ```
 ├── docker-compose.yml          # lokální dev
 ├── docker-compose.prod.yml     # produkce
+├── k8s/jidlo.yml               # Kubernetes Service + Ingress
 ├── .env.prod.example           # šablona produkčních hesel
 ├── .htaccess                   # rewrite rules + upload limit 20MB
 ├── seed.sh                     # ukázkové potraviny (spustí se při první instalaci)
