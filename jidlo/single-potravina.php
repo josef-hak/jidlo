@@ -19,6 +19,11 @@
             <div class="food-detail-brand"><?php echo esc_html($brand); ?></div>
         <?php endif; ?>
 
+        <?php $popis = get_post_meta(get_the_ID(), '_jidlo_popis', true); ?>
+        <?php if ($popis): ?>
+            <p class="food-detail-description"><?php echo esc_html($popis); ?></p>
+        <?php endif; ?>
+
         <?php
         $terms = get_the_terms(get_the_ID(), 'kategorie_potravin');
         if (!empty($terms) && !is_wp_error($terms)):

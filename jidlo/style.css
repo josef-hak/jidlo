@@ -260,6 +260,13 @@ img { max-width: 100%; height: auto; display: block; }
     margin-bottom: 1rem;
 }
 
+.food-detail-description {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
 .food-detail-category {
     display: inline-block;
     padding: 0.2rem 0.6rem;

@@ -23,6 +23,15 @@ function jidlo_add_meta_boxes() {
     );
 
     add_meta_box(
+        'jidlo_popis',
+        'Popis',
+        'jidlo_popis_meta_box_html',
+        'potravina',
+        'normal',
+        'high'
+    );
+
+    add_meta_box(
         'jidlo_znacka',
         'Značka / Výrobce',
         'jidlo_znacka_meta_box_html',
@@ -49,6 +58,12 @@ function jidlo_nutri_meta_box_html($post) {
     echo '</tbody></table>';
 }
 
+function jidlo_popis_meta_box_html($post) {
+    $value = get_post_meta($post->ID, '_jidlo_popis', true);
+    echo '<textarea name="jidlo_popis" rows="2" maxlength="300" class="widefat" placeholder="Krátký popis potraviny (do 300 znaků)">' . esc_textarea($value) . '</textarea>';
+    echo '<p class="description">' . mb_strlen($value) . ' / 300 znaků</p>';
+}
+
 function jidlo_znacka_meta_box_html($post) {
     $value = get_post_meta($post->ID, '_jidlo_znacka', true);
     echo '<input type="text" name="jidlo_znacka" value="' . esc_attr($value) . '" class="widefat">';
@@ -73,6 +88,10 @@ function jidlo_save_meta($post_id) {
         } else {
             delete_post_meta($post_id, '_jidlo_' . $key);
         }
+    }
+
+    if (isset($_POST['jidlo_popis'])) {
+        update_post_meta($post_id, '_jidlo_popis', sanitize_textarea_field(mb_substr($_POST['jidlo_popis'], 0, 300)));
     }
 
     if (isset($_POST['jidlo_znacka'])) {

@@ -16,6 +16,7 @@ wp post meta update $POST_ID _jidlo_vlaknina 0 --allow-root
 wp post meta update $POST_ID _jidlo_bilkoviny 4 --allow-root
 wp post meta update $POST_ID _jidlo_sul 0.1 --allow-root
 wp post meta update $POST_ID _jidlo_znacka "Hollandia" --allow-root
+wp post meta update $POST_ID _jidlo_popis "Bio selský jogurt s kulturou BiFi, 3,8 % tuku. Zraje přímo v kelímku, bez přidaných cukrů, škrobů a konzervantů." --allow-root
 wp post term set $POST_ID kategorie_potravin "Mléčné výrobky" --allow-root
 
 # --- Šunka nejvyšší jakosti 95% Pikok Pure ---
@@ -30,6 +31,7 @@ wp post meta update $POST_ID _jidlo_vlaknina 0 --allow-root
 wp post meta update $POST_ID _jidlo_bilkoviny 18.9 --allow-root
 wp post meta update $POST_ID _jidlo_sul 1.9 --allow-root
 wp post meta update $POST_ID _jidlo_znacka "Pikok Pure (Lidl)" --allow-root
+wp post meta update $POST_ID _jidlo_popis "Vepřová šunka nejvyšší jakosti, 95 % masa. Bez přidaných fosforečnanů, bez lepku, bez laktózy." --allow-root
 wp post term set $POST_ID kategorie_potravin "Maso a uzeniny" --allow-root
 
 echo "Seeding done! Created 2 food items."

@@ -35,6 +35,11 @@ if (!is_user_logged_in()):
         </div>
 
         <div class="form-group">
+            <label for="food-description">Popis</label>
+            <textarea id="food-description" name="food_description" rows="2" maxlength="300" placeholder="Krátký popis potraviny (do 300 znaků)"></textarea>
+        </div>
+
+        <div class="form-group">
             <label for="food-category">Kategorie</label>
             <select id="food-category" name="food_category">
                 <option value="">— Vyberte —</option>
