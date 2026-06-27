@@ -1,0 +1,98 @@
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  wordpress:
+    image: wordpress:latest
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "172.17.0.1:8084:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - wp_data:/var/www/html
+      - ./jidlo:/var/www/html/wp-content/themes/jidlo
+      - ./.htaccess:/tmp/.htaccess-template
+    command: >
+      bash -c '
+        cp /tmp/.htaccess-template /var/www/html/.htaccess 2>/dev/null;
+        docker-entrypoint.sh apache2-foreground
+      '
+
+  wp-setup:
+    image: wordpress:cli
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    volumes:
+      - wp_data:/var/www/html
+      - ./jidlo:/var/www/html/wp-content/themes/jidlo
+      - ./seed.sh:/tmp/seed.sh
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    command: >
+      sh -c '
+        echo "Waiting for wp-config.php...";
+        until [ -f /var/www/html/wp-config.php ]; do sleep 2; done;
+
+        echo "Waiting for database connection...";
+        until MYSQL_PWD=${MYSQL_PASSWORD} mysql -h db -u wordpress --skip-ssl wordpress -e "SELECT 1" >/dev/null 2>&1; do sleep 3; done;
+
+        export PAGER=cat;
+
+        if ! wp core is-installed --allow-root 2>/dev/null; then
+          echo "Installing WordPress...";
+          wp core install --url="${WP_URL}" --title="Jídlo" --admin_user=admin --admin_password="${WP_ADMIN_PASSWORD}" --admin_email=admin@jhak.cz --skip-email --allow-root;
+
+          echo "Configuring WordPress...";
+          wp option update blogdescription "Katalog potravin" --allow-root;
+          wp option update WPLANG "cs_CZ" --allow-root;
+          wp language core install cs_CZ --allow-root;
+          wp site switch-language cs_CZ --allow-root;
+          wp option update timezone_string "Europe/Prague" --allow-root;
+          wp option update date_format "j. n. Y" --allow-root;
+          wp option update time_format "H:i" --allow-root;
+
+          echo "Activating theme...";
+          wp theme activate jidlo --allow-root;
+
+          echo "Flushing rewrite rules...";
+          wp rewrite structure "/%postname%/" --allow-root;
+          wp rewrite flush --allow-root;
+
+          echo "Seeding food items...";
+          sh /tmp/seed.sh;
+
+          echo "Done! Site ready at ${WP_URL}";
+        else
+          echo "WordPress already installed, skipping.";
+        fi
+      '
+
+volumes:
+  db_data:
+  wp_data:
