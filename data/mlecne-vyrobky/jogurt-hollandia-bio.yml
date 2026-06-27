@@ -1,14 +1,14 @@
-nazev: Jogurt Hollandia Bio selský bílý
+nazev: Hollandia BIO Selský jogurt bílý 3,5%
 znacka: Hollandia
 popis: "Bio selský jogurt s kulturou BiFi, 3,8 % tuku. Zraje přímo v kelímku, bez přidaných cukrů, škrobů a konzervantů."
-obrazek: imgs/mlecne-vyrobky.jpg
+obrazek:
 nutrice:
   energie_kj: 265
   energie_kcal: 63
-  tuky: 4
-  nasycene_mk: 2
-  sacharidy: 4
-  cukry: 4
+  tuky: 3.8
+  nasycene_mk: 2.1
+  sacharidy: 3.8
+  cukry: 3.5
   vlaknina: 0
-  bilkoviny: 4
+  bilkoviny: 3.5
   sul: 0.1

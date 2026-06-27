@@ -3,12 +3,12 @@
 define('JIDLO_NUTRI_FIELDS', [
     'energie_kj'  => ['label' => 'Energetická hodnota (kJ)',         'unit' => 'kJ'],
     'energie_kcal' => ['label' => 'Energetická hodnota (kcal)',       'unit' => 'kcal'],
-    'tuky'         => ['label' => 'Tuky',                              'unit' => 'g'],
-    'nasycene_mk'  => ['label' => '— z toho nasycené mastné kyseliny', 'unit' => 'g'],
+    'bilkoviny'    => ['label' => 'Bílkoviny',                         'unit' => 'g'],
     'sacharidy'    => ['label' => 'Sacharidy',                         'unit' => 'g'],
     'cukry'        => ['label' => '— z toho cukry',                    'unit' => 'g'],
     'vlaknina'     => ['label' => 'Vláknina',                          'unit' => 'g'],
-    'bilkoviny'    => ['label' => 'Bílkoviny',                         'unit' => 'g'],
+    'tuky'         => ['label' => 'Tuky',                              'unit' => 'g'],
+    'nasycene_mk'  => ['label' => '— z toho nasycené mastné kyseliny', 'unit' => 'g'],
     'sul'          => ['label' => 'Sůl',                               'unit' => 'g'],
 ]);
 

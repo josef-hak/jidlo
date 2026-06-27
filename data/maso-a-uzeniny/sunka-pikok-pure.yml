@@ -1,14 +1,14 @@
 nazev: Šunka nejvyšší jakosti 95% Pikok Pure
 znacka: Pikok Pure (Lidl)
 popis: "Vepřová šunka nejvyšší jakosti, 95 % masa. Bez přidaných fosforečnanů, bez lepku, bez laktózy."
-obrazek: imgs/maso-a-uzeniny.jpg
+obrazek: imgs/maso-a-uzeniny.svg
 nutrice:
   energie_kj: 456
   energie_kcal: 109
-  tuky: 3.2
-  nasycene_mk: 0.8
-  sacharidy: 0.1
+  bilkoviny: 18.9
+  sacharidy: 0.8
   cukry: 0.1
   vlaknina: 0
-  bilkoviny: 18.9
+  tuky: 3.2
+  nasycene_mk: 0.8
   sul: 1.9

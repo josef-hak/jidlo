@@ -58,3 +58,19 @@ function jidlo_activate() {
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'jidlo_activate');
+
+/**
+ * Get category SVG icon URL for a food item.
+ * Falls back to "ostatni.svg" if category has no icon.
+ */
+function jidlo_category_icon_url($post_id = null) {
+    $post_id = $post_id ?: get_the_ID();
+    $terms = get_the_terms($post_id, 'kategorie_potravin');
+    $slug = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->slug : 'ostatni';
+
+    $icon_path = get_template_directory() . '/assets/imgs/' . $slug . '.svg';
+    if (file_exists($icon_path)) {
+        return get_template_directory_uri() . '/assets/imgs/' . $slug . '.svg';
+    }
+    return get_template_directory_uri() . '/assets/imgs/ostatni.svg';
+}

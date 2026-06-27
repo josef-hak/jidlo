@@ -10,7 +10,6 @@ and bulk-inserts all items in a single transaction for speed.
 
 import glob
 import os
-import shutil
 import sys
 import time
 import re
@@ -32,7 +31,6 @@ def slugify(text):
     return text[:200]
 
 DATA_DIR = os.environ.get("DATA_DIR", "/tmp/data")
-WP_UPLOADS = "/var/www/html/wp-content/uploads"
 
 NUTRI_KEYS = [
     "energie_kj", "energie_kcal", "tuky", "nasycene_mk",
@@ -112,51 +110,6 @@ def get_or_create_term(cur, name, taxonomy="kategorie_potravin"):
     return cur.lastrowid
 
 
-def import_image(cur, image_path, post_id):
-    """Copy image to wp-content/uploads and create attachment post."""
-    if not os.path.isfile(image_path):
-        return None
-
-    now = datetime.now()
-    upload_subdir = now.strftime("%Y/%m")
-    upload_dir = os.path.join(WP_UPLOADS, upload_subdir)
-    os.makedirs(upload_dir, exist_ok=True)
-
-    filename = os.path.basename(image_path)
-    dest = os.path.join(upload_dir, filename)
-
-    # Avoid overwriting — add suffix if exists
-    if os.path.exists(dest):
-        base, ext = os.path.splitext(filename)
-        dest = os.path.join(upload_dir, f"{base}-{post_id}{ext}")
-        filename = os.path.basename(dest)
-
-    shutil.copy2(image_path, dest)
-
-    rel_path = f"{upload_subdir}/{filename}"
-    now_str = now.strftime("%Y-%m-%d %H:%M:%S")
-
-    cur.execute(
-        "INSERT INTO wp_posts (post_author, post_date, post_date_gmt, post_content, "
-        "post_title, post_excerpt, post_status, comment_status, ping_status, "
-        "post_name, to_ping, pinged, post_content_filtered, "
-        "post_modified, post_modified_gmt, post_parent, guid, "
-        "post_type, post_mime_type) "
-        "VALUES (1, %s, %s, '', %s, '', 'inherit', 'open', 'closed', "
-        "%s, '', '', '', %s, %s, %s, %s, 'attachment', 'image/jpeg')",
-        (now_str, now_str, filename, filename, now_str, now_str, post_id,
-         f"/wp-content/uploads/{rel_path}"),
-    )
-    att_id = cur.lastrowid
-
-    cur.execute(
-        "INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (%s, '_wp_attached_file', %s)",
-        (att_id, rel_path),
-    )
-
-    return att_id
-
-
 def load_items():
     """Load all YAML files from data/ subdirectories."""
     items = []
@@ -230,14 +183,6 @@ def seed(items):
             meta_rows.append((post_id, "_jidlo_znacka", item["znacka"]))
         if item.get("popis"):
             meta_rows.append((post_id, "_jidlo_popis", item["popis"]))
-
-        # Image
-        img_rel = item.get("obrazek")
-        if img_rel:
-            img_path = os.path.join(item["_dir"], img_rel)
-            att_id = import_image(cur, img_path, post_id)
-            if att_id:
-                meta_rows.append((post_id, "_thumbnail_id", str(att_id)))
 
         if meta_rows:
             cur.executemany(

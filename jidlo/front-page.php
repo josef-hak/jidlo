@@ -45,6 +45,8 @@
                 <div class="food-card-image">
                     <?php if (has_post_thumbnail()): ?>
                         <?php the_post_thumbnail('food-thumb'); ?>
+                    <?php else: ?>
+                        <img src="<?php echo esc_url(jidlo_category_icon_url()); ?>" alt="">
                     <?php endif; ?>
                 </div>
                 <div class="food-card-body">
