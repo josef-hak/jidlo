@@ -69,7 +69,7 @@ services:
 
         if ! wp core is-installed --allow-root 2>/dev/null; then
           echo "Installing WordPress...";
-          wp core install --url="http://localhost:8080" --title="Jídlo" --admin_user=admin --admin_password=AdminAdmin.123 --admin_email=admin@example.com --skip-email --allow-root;
+          wp core install --url="http://localhost:8080" --title="Jídlo" --admin_user=admin --admin_password='admin' --admin_email=admin@example.com --skip-email --allow-root;
 
           echo "Configuring WordPress...";
           wp option update blogdescription "Katalog potravin" --allow-root;
@@ -91,7 +91,7 @@ services:
           sh /tmp/seed.sh;
 
           echo "Done! Site ready at http://localhost:8080";
-          echo "Admin: http://localhost:8080/wp-admin (admin/AdminAdmin.123)";
+          echo "Admin: http://localhost:8080/wp-admin (admin/admin)";
         else
           echo "WordPress already installed, skipping.";
         fi
