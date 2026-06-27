@@ -11,16 +11,19 @@ Text Domain: jidlo
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --color-bg: #f8f9fa;
+    --color-bg: #fef6f3;
     --color-surface: #ffffff;
-    --color-text: #212529;
-    --color-muted: #6c757d;
-    --color-primary: #2d6a4f;
-    --color-primary-light: #40916c;
-    --color-border: #dee2e6;
-    --color-accent: #e9ecef;
-    --radius: 8px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --color-text: #2d2019;
+    --color-muted: #8c7568;
+    --color-primary: #e07850;
+    --color-primary-light: #f09070;
+    --color-primary-dark: #c45e38;
+    --color-border: #f0ddd6;
+    --color-accent: #fceee8;
+    --color-teal: #3a9e8f;
+    --color-teal-light: #e6f5f2;
+    --radius: 10px;
+    --shadow: 0 1px 4px rgba(180,100,70,0.1);
 }
 
 body {
@@ -31,14 +34,15 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-a { color: var(--color-primary); text-decoration: none; }
-a:hover { color: var(--color-primary-light); }
+a { color: var(--color-primary-dark); text-decoration: none; }
+a:hover { color: var(--color-primary); }
 img { max-width: 100%; height: auto; display: block; }
 
 /* === Layout === */
 .site-header {
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
+    background: var(--color-primary);
+    color: white;
+    border-bottom: none;
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
@@ -51,7 +55,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: white;
 }
 
 .site-header nav ul {
@@ -64,6 +68,11 @@ img { max-width: 100%; height: auto; display: block; }
 .site-header nav a {
     font-size: 0.9rem;
     font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+
+.site-header nav a:hover {
+    color: white;
 }
 
 .site-content {
@@ -116,7 +125,12 @@ img { max-width: 100%; height: auto; display: block; }
     transition: all 0.15s;
 }
 
-.filter-pill:hover,
+.filter-pill:hover {
+    background: var(--color-accent);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+
 .filter-pill.active {
     background: var(--color-primary);
     color: white;
@@ -167,6 +181,7 @@ img { max-width: 100%; height: auto; display: block; }
     aspect-ratio: 1;
     background: var(--color-accent);
     overflow: hidden;
+    border-bottom: 2px solid var(--color-border);
 }
 
 .food-card-image img {
@@ -204,6 +219,7 @@ img { max-width: 100%; height: auto; display: block; }
     font-weight: 700;
     font-size: 0.8rem;
     display: block;
+    color: var(--color-teal);
 }
 
 .macro-label {
@@ -248,7 +264,9 @@ img { max-width: 100%; height: auto; display: block; }
     display: inline-block;
     padding: 0.2rem 0.6rem;
     font-size: 0.8rem;
-    background: var(--color-accent);
+    background: var(--color-teal-light);
+    color: var(--color-teal);
+    font-weight: 500;
     border-radius: 12px;
     margin-bottom: 1rem;
 }
@@ -393,7 +411,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .btn-primary:hover {
-    background: var(--color-primary-light);
+    background: var(--color-primary-dark);
 }
 
 .btn-primary:disabled {
@@ -414,8 +432,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .form-message.success {
-    background: #d1fae5;
-    color: #065f46;
+    background: var(--color-teal-light);
+    color: #1a6b5e;
     display: block;
 }
 
@@ -465,6 +483,7 @@ img { max-width: 100%; height: auto; display: block; }
     font-weight: 600;
     background: var(--color-primary);
     color: white;
+    transition: background 0.15s;
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
@@ -492,7 +511,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .fab:hover {
-    background: var(--color-primary-light);
+    background: var(--color-primary-dark);
     color: white;
     transform: scale(1.05);
 }
