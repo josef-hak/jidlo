@@ -1,0 +1,507 @@
+/*
+Theme Name: Jídlo
+Theme URI:
+Description: Osobní katalog potravin s nutričními hodnotami
+Version: 1.0.0
+Author: Josef Hak
+Text Domain: jidlo
+*/
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --color-bg: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-text: #212529;
+    --color-muted: #6c757d;
+    --color-primary: #2d6a4f;
+    --color-primary-light: #40916c;
+    --color-border: #dee2e6;
+    --color-accent: #e9ecef;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-light); }
+img { max-width: 100%; height: auto; display: block; }
+
+/* === Layout === */
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.site-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.site-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.site-header nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.site-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+
+/* === Catalog === */
+.catalog-header {
+    margin-bottom: 1.5rem;
+}
+
+.catalog-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.catalog-search {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+}
+
+.catalog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.filter-pill {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.filter-pill:hover,
+.filter-pill.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.catalog-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-muted);
+}
+
+/* === Food Card === */
+.food-card {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.food-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.food-card a {
+    color: inherit;
+    display: block;
+}
+
+.food-card-image {
+    aspect-ratio: 1;
+    background: var(--color-accent);
+    overflow: hidden;
+}
+
+.food-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-card-body {
+    padding: 0.75rem;
+}
+
+.food-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.food-card-brand {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+}
+
+.food-card-macros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.macro-value {
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.macro-label {
+    color: var(--color-muted);
+    display: block;
+}
+
+/* === Single Food Detail === */
+.food-detail {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.food-detail-image {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.food-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-detail-body {
+    padding: 1.5rem;
+}
+
+.food-detail-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.food-detail-brand {
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+}
+
+.food-detail-category {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    background: var(--color-accent);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.food-detail-notes {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.food-detail-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* === Nutrition Table === */
+.nutrition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.nutrition-table caption {
+    text-align: left;
+    font-weight: 700;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.nutrition-table th {
+    font-weight: 500;
+}
+
+.nutrition-table td {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nutrition-table tr.sub th {
+    padding-left: 1.5rem;
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+/* === Food Form === */
+.food-form {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.food-form h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.form-group label.sub {
+    padding-left: 1rem;
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    min-height: 44px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input[type="number"] {
+    width: 120px;
+}
+
+.form-group .unit {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-left: 0.3rem;
+}
+
+.form-section-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.photo-preview {
+    max-width: 200px;
+    margin-top: 0.5rem;
+    border-radius: var(--radius);
+    display: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    min-height: 44px;
+    transition: background 0.15s;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-light);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+.form-message {
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.form-message.success {
+    background: #d1fae5;
+    color: #065f46;
+    display: block;
+}
+
+.form-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    display: block;
+}
+
+/* === Login Form === */
+.login-prompt {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.login-prompt h2 {
+    margin-bottom: 1rem;
+}
+
+.login-prompt .login-form {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.login-prompt .login-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.login-prompt .login-form input[type="text"],
+.login-prompt .login-form input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    min-height: 44px;
+}
+
+.login-prompt .login-form input[type="submit"] {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    min-height: 44px;
+}
+
+/* === FAB (Floating Action Button) === */
+.fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 50;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.fab:hover {
+    background: var(--color-primary-light);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* === 404 === */
+.not-found {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.not-found h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* === Back link === */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
