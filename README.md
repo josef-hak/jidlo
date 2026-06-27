@@ -55,6 +55,15 @@ Vytvoří Service, Endpoints a Ingress pro `jidlo.jhak.cz` s automatickým TLS c
         └── catalog.js          # hledání a filtr kategorií
 ```
 
+## Záloha a obnova
+
+```bash
+./scripts/backup.sh                              # vytvoří jidlo-backup-*.tar.gz
+./scripts/restore.sh jidlo-backup-2026-06-27.tar.gz  # obnoví ze zálohy
+```
+
+Zálohuje databázi (mysqldump) + nahrané fotky (wp-content/uploads).
+
 ## Nutriční hodnoty
 
 EU deklarace na 100 g: energie (kJ/kcal), tuky, nasycené MK, sacharidy, cukry, vláknina, bílkoviny, sůl.
