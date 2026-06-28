@@ -33,20 +33,52 @@
     if ($foods->have_posts()):
         while ($foods->have_posts()): $foods->the_post();
             $kcal     = get_post_meta(get_the_ID(), '_jidlo_energie_kcal', true);
-            $protein  = get_post_meta(get_the_ID(), '_jidlo_bilkoviny', true);
-            $carbs    = get_post_meta(get_the_ID(), '_jidlo_sacharidy', true);
-            $fat      = get_post_meta(get_the_ID(), '_jidlo_tuky', true);
+            $protein  = floatval(get_post_meta(get_the_ID(), '_jidlo_bilkoviny', true));
+            $carbs    = floatval(get_post_meta(get_the_ID(), '_jidlo_sacharidy', true));
+            $fat      = floatval(get_post_meta(get_the_ID(), '_jidlo_tuky', true));
             $brand    = get_post_meta(get_the_ID(), '_jidlo_znacka', true);
             $terms    = get_the_terms(get_the_ID(), 'kategorie_potravin');
             $cat_slug = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->slug : '';
+
+            $total = $protein + $carbs + $fat;
+            $p_bilk = $total > 0 ? $protein / $total * 100 : 0;
+            $p_sach = $total > 0 ? $carbs / $total * 100 : 0;
+            $p_tuky = $total > 0 ? $fat / $total * 100 : 0;
     ?>
         <div class="food-card" data-category="<?php echo esc_attr($cat_slug); ?>">
             <a href="<?php the_permalink(); ?>">
-                <div class="food-card-image">
-                    <?php if (has_post_thumbnail()): ?>
-                        <?php the_post_thumbnail('food-thumb'); ?>
-                    <?php else: ?>
-                        <img src="<?php echo esc_url(jidlo_category_icon_url()); ?>" alt="">
+                <div class="food-card-visual">
+                    <div class="food-card-image">
+                        <?php if (has_post_thumbnail()): ?>
+                            <?php the_post_thumbnail('food-thumb'); ?>
+                        <?php else: ?>
+                            <img src="<?php echo esc_url(jidlo_category_icon_url()); ?>" alt="">
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($total > 0):
+                        $o1 = 0;
+                        $o2 = $o1 + $p_bilk;
+                        $o3 = $o2 + $p_sach;
+                    ?>
+                    <div class="food-card-donut">
+                        <svg viewBox="0 0 42 42">
+                            <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e8e8e8" stroke-width="5"/>
+                            <?php
+                            $segs = [
+                                [$p_bilk, '#e05555', $o1],
+                                [$p_sach, '#5588dd', $o2],
+                                [$p_tuky, '#eebb44', $o3],
+                            ];
+                            foreach ($segs as $s):
+                                if ($s[0] < 0.5) continue;
+                            ?>
+                            <circle cx="21" cy="21" r="15.9" fill="none"
+                                stroke="<?php echo $s[1]; ?>" stroke-width="5"
+                                stroke-dasharray="<?php echo round($s[0], 1); ?> <?php echo round(100 - $s[0], 1); ?>"
+                                stroke-dashoffset="<?php echo round(100 - $s[2] + 25, 1); ?>"/>
+                            <?php endforeach; ?>
+                        </svg>
+                    </div>
                     <?php endif; ?>
                 </div>
                 <div class="food-card-body">
@@ -56,9 +88,9 @@
                     <?php endif; ?>
                     <div class="food-card-macros">
                         <div><span class="macro-value"><?php echo $kcal !== '' ? esc_html($kcal) : '—'; ?></span><span class="macro-label">kcal</span></div>
-                        <div><span class="macro-value"><?php echo $protein !== '' ? esc_html($protein) : '—'; ?></span><span class="macro-label">bílk.</span></div>
-                        <div><span class="macro-value"><?php echo $carbs !== '' ? esc_html($carbs) : '—'; ?></span><span class="macro-label">sach.</span></div>
-                        <div><span class="macro-value"><?php echo $fat !== '' ? esc_html($fat) : '—'; ?></span><span class="macro-label">tuky</span></div>
+                        <div style="background:#e0555515"><span class="macro-value"><?php echo $protein ? esc_html($protein) : '—'; ?></span><span class="macro-label">bílk.</span></div>
+                        <div style="background:#5588dd15"><span class="macro-value"><?php echo $carbs ? esc_html($carbs) : '—'; ?></span><span class="macro-label">sach.</span></div>
+                        <div style="background:#eebb4415"><span class="macro-value"><?php echo $fat ? esc_html($fat) : '—'; ?></span><span class="macro-label">tuky</span></div>
                     </div>
                 </div>
             </a>
