@@ -1,7 +1,8 @@
 nazev: Chléb pasecký Náš chléb
 znacka: Náš chléb
 popis: "Tradiční český chléb."
-obrazek:
+obrazky:
+  - imgs/chleb-pasecky.jpg
 nutrice:
   energie_kj: 936
   energie_kcal: 224
