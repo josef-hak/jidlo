@@ -8,9 +8,11 @@
 $gallery_ids = get_post_meta(get_the_ID(), '_jidlo_gallery', true);
 $gallery = $gallery_ids ? explode(',', $gallery_ids) : [];
 $has_gallery = count($gallery) > 0;
+$detail_terms = get_the_terms(get_the_ID(), 'kategorie_potravin');
+$detail_cat_slug = (!empty($detail_terms) && !is_wp_error($detail_terms)) ? $detail_terms[0]->slug : '';
 ?>
 
-<div class="food-detail">
+<div class="food-detail cat-detail-<?php echo esc_attr($detail_cat_slug); ?>">
     <div class="food-detail-header" id="detail-header">
         <div class="food-detail-icon-wrap<?php echo $has_gallery ? ' has-gallery' : ''; ?>" id="gallery-trigger">
             <?php if (has_post_thumbnail()): ?>
@@ -31,7 +33,7 @@ $has_gallery = count($gallery) > 0;
             $terms = get_the_terms(get_the_ID(), 'kategorie_potravin');
             if (!empty($terms) && !is_wp_error($terms)):
                 foreach ($terms as $term): ?>
-                    <span class="food-detail-category"><?php echo esc_html($term->name); ?></span>
+                    <span class="food-detail-category cat-<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></span>
                 <?php endforeach;
             endif;
             ?>

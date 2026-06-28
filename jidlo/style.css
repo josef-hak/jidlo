@@ -22,6 +22,36 @@ Text Domain: jidlo
     --color-accent: #fceee8;
     --color-teal: #3a9e8f;
     --color-teal-light: #e6f5f2;
+
+    /* Category colors */
+    --cat-maso: #d4577a;
+    --cat-maso-bg: #fce8ee;
+    --cat-maso-border: #e8a0b8;
+    --cat-mleko: #4a8ec2;
+    --cat-mleko-bg: #e8f0fa;
+    --cat-mleko-border: #a8c8e8;
+    --cat-pecivo: #a07040;
+    --cat-pecivo-bg: #f5ebe0;
+    --cat-pecivo-border: #d4b898;
+    --cat-lusteniny: #b89840;
+    --cat-lusteniny-bg: #f6f0dc;
+    --cat-lusteniny-border: #d8c890;
+    --cat-zelenina: #4a9e5a;
+    --cat-zelenina-bg: #e8f5ea;
+    --cat-zelenina-border: #a0d8a8;
+    --cat-ovoce: #e0884a;
+    --cat-ovoce-bg: #fceee0;
+    --cat-ovoce-border: #e8c0a0;
+    --cat-napoje: #5a8ea0;
+    --cat-napoje-bg: #e8f0f4;
+    --cat-napoje-border: #a0c8d8;
+    --cat-sladkosti: #8e5a7a;
+    --cat-sladkosti-bg: #f4e8f0;
+    --cat-sladkosti-border: #d0a8c4;
+    --cat-ostatni: #8c8070;
+    --cat-ostatni-bg: #f0eee8;
+    --cat-ostatni-border: #c8c0b8;
+
     --radius: 10px;
     --shadow: 0 1px 4px rgba(180,100,70,0.1);
 }
@@ -131,6 +161,26 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--color-primary-dark);
 }
 
+.filter-pill[data-category="maso-a-uzeniny"]    { border-color: var(--cat-maso-border); color: var(--cat-maso); }
+.filter-pill[data-category="mlecne-vyrobky"]     { border-color: var(--cat-mleko-border); color: var(--cat-mleko); }
+.filter-pill[data-category="pecivo-a-obiloviny"] { border-color: var(--cat-pecivo-border); color: var(--cat-pecivo); }
+.filter-pill[data-category="lusteniny-a-orechy"] { border-color: var(--cat-lusteniny-border); color: var(--cat-lusteniny); }
+.filter-pill[data-category="zelenina"]           { border-color: var(--cat-zelenina-border); color: var(--cat-zelenina); }
+.filter-pill[data-category="ovoce"]              { border-color: var(--cat-ovoce-border); color: var(--cat-ovoce); }
+.filter-pill[data-category="napoje"]             { border-color: var(--cat-napoje-border); color: var(--cat-napoje); }
+.filter-pill[data-category="sladkosti"]          { border-color: var(--cat-sladkosti-border); color: var(--cat-sladkosti); }
+.filter-pill[data-category="ostatni"]            { border-color: var(--cat-ostatni-border); color: var(--cat-ostatni); }
+
+.filter-pill[data-category="maso-a-uzeniny"].active    { background: var(--cat-maso); color: white; border-color: var(--cat-maso); }
+.filter-pill[data-category="mlecne-vyrobky"].active     { background: var(--cat-mleko); color: white; border-color: var(--cat-mleko); }
+.filter-pill[data-category="pecivo-a-obiloviny"].active { background: var(--cat-pecivo); color: white; border-color: var(--cat-pecivo); }
+.filter-pill[data-category="lusteniny-a-orechy"].active { background: var(--cat-lusteniny); color: white; border-color: var(--cat-lusteniny); }
+.filter-pill[data-category="zelenina"].active           { background: var(--cat-zelenina); color: white; border-color: var(--cat-zelenina); }
+.filter-pill[data-category="ovoce"].active              { background: var(--cat-ovoce); color: white; border-color: var(--cat-ovoce); }
+.filter-pill[data-category="napoje"].active             { background: var(--cat-napoje); color: white; border-color: var(--cat-napoje); }
+.filter-pill[data-category="sladkosti"].active          { background: var(--cat-sladkosti); color: white; border-color: var(--cat-sladkosti); }
+.filter-pill[data-category="ostatni"].active            { background: var(--cat-ostatni); color: white; border-color: var(--cat-ostatni); }
+
 .filter-pill.active {
     background: var(--color-primary);
     color: white;
@@ -171,6 +221,16 @@ img { max-width: 100%; height: auto; display: block; }
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
+
+.food-card[data-category="maso-a-uzeniny"]    { background: var(--cat-maso-bg); border: 1px solid var(--cat-maso-border); }
+.food-card[data-category="mlecne-vyrobky"]     { background: var(--cat-mleko-bg); border: 1px solid var(--cat-mleko-border); }
+.food-card[data-category="pecivo-a-obiloviny"] { background: var(--cat-pecivo-bg); border: 1px solid var(--cat-pecivo-border); }
+.food-card[data-category="lusteniny-a-orechy"] { background: var(--cat-lusteniny-bg); border: 1px solid var(--cat-lusteniny-border); }
+.food-card[data-category="zelenina"]           { background: var(--cat-zelenina-bg); border: 1px solid var(--cat-zelenina-border); }
+.food-card[data-category="ovoce"]              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
+.food-card[data-category="napoje"]             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
+.food-card[data-category="sladkosti"]          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
+.food-card[data-category="ostatni"]            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
 
 .food-card a {
     color: inherit;
@@ -259,6 +319,16 @@ img { max-width: 100%; height: auto; display: block; }
     overflow: hidden;
 }
 
+.food-detail.cat-detail-maso-a-uzeniny    { background: var(--cat-maso-bg); border: 1px solid var(--cat-maso-border); }
+.food-detail.cat-detail-mlecne-vyrobky     { background: var(--cat-mleko-bg); border: 1px solid var(--cat-mleko-border); }
+.food-detail.cat-detail-pecivo-a-obiloviny { background: var(--cat-pecivo-bg); border: 1px solid var(--cat-pecivo-border); }
+.food-detail.cat-detail-lusteniny-a-orechy { background: var(--cat-lusteniny-bg); border: 1px solid var(--cat-lusteniny-border); }
+.food-detail.cat-detail-zelenina           { background: var(--cat-zelenina-bg); border: 1px solid var(--cat-zelenina-border); }
+.food-detail.cat-detail-ovoce              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
+.food-detail.cat-detail-napoje             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
+.food-detail.cat-detail-sladkosti          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
+.food-detail.cat-detail-ostatni            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
+
 .food-detail-header {
     display: flex;
     gap: 1.25rem;
@@ -303,12 +373,22 @@ img { max-width: 100%; height: auto; display: block; }
     display: inline-block;
     padding: 0.15rem 0.5rem;
     font-size: 0.75rem;
-    background: var(--color-teal-light);
-    color: var(--color-teal);
+    background: var(--color-accent);
+    color: var(--color-muted);
     font-weight: 500;
     border-radius: 12px;
     margin-bottom: 0.5rem;
 }
+
+.food-detail-category.cat-maso-a-uzeniny    { background: var(--cat-maso-bg); color: var(--cat-maso); border: 1px solid var(--cat-maso-border); }
+.food-detail-category.cat-mlecne-vyrobky     { background: var(--cat-mleko-bg); color: var(--cat-mleko); border: 1px solid var(--cat-mleko-border); }
+.food-detail-category.cat-pecivo-a-obiloviny { background: var(--cat-pecivo-bg); color: var(--cat-pecivo); border: 1px solid var(--cat-pecivo-border); }
+.food-detail-category.cat-lusteniny-a-orechy { background: var(--cat-lusteniny-bg); color: var(--cat-lusteniny); border: 1px solid var(--cat-lusteniny-border); }
+.food-detail-category.cat-zelenina           { background: var(--cat-zelenina-bg); color: var(--cat-zelenina); border: 1px solid var(--cat-zelenina-border); }
+.food-detail-category.cat-ovoce              { background: var(--cat-ovoce-bg); color: var(--cat-ovoce); border: 1px solid var(--cat-ovoce-border); }
+.food-detail-category.cat-napoje             { background: var(--cat-napoje-bg); color: var(--cat-napoje); border: 1px solid var(--cat-napoje-border); }
+.food-detail-category.cat-sladkosti          { background: var(--cat-sladkosti-bg); color: var(--cat-sladkosti); border: 1px solid var(--cat-sladkosti-border); }
+.food-detail-category.cat-ostatni            { background: var(--cat-ostatni-bg); color: var(--cat-ostatni); border: 1px solid var(--cat-ostatni-border); }
 
 .food-detail-description {
     color: var(--color-muted);
@@ -387,6 +467,7 @@ img { max-width: 100%; height: auto; display: block; }
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
+    background: var(--color-surface);
 }
 
 .nutrition-table caption {
