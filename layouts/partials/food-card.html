@@ -5,6 +5,7 @@
 {{ $brand := .Params.znacka }}
 {{ $cat_slug := .Params.kategorie_slug }}
 {{ $images := .Params.obrazky }}
+{{ $thumb := .Params.thumbnail }}
 
 {{ $total := add (add $protein $carbs) $fat }}
 {{ $p_bilk := 0.0 }}{{ $p_sach := 0.0 }}{{ $p_tuky := 0.0 }}
@@ -18,8 +19,8 @@
     <a href="{{ .RelPermalink }}">
         <div class="food-card-visual">
             <div class="food-card-image">
-                {{ if $images }}
-                    <img src="{{ index $images 0 }}" alt="{{ .Title }}" loading="lazy">
+                {{ if $thumb }}
+                    <img src="{{ $thumb }}" alt="{{ .Title }}" loading="lazy">
                 {{ else }}
                     <img src="/imgs/{{ $cat_slug }}.svg" alt="" loading="lazy">
                 {{ end }}

@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Convert data/*.yml files into Hugo content/potravina/*.md + copy images."""
+"""Convert data/*.yml files into Hugo content/potravina/*.md + optimized images."""
 
 import glob
 import os
-import shutil
 from pathlib import Path
 
 import yaml
+from PIL import Image
 
 DATA_DIR = os.environ.get("DATA_DIR", "data")
 CONTENT_DIR = "content/potravina"
 STATIC_IMG_DIR = "static/imgs/food"
+
+THUMB_SIZE = 300
+FULL_MAX = 800
+JPEG_QUALITY = 80
 
 CATEGORY_MAP = {
     "mlecne-vyrobky": "Mléčné výrobky",
@@ -26,11 +30,28 @@ CATEGORY_MAP = {
 }
 
 
+def resize_image(src, dest, max_size, crop_square=False):
+    """Resize image. If crop_square, crop center square then resize."""
+    img = Image.open(src)
+    img = img.convert("RGB")
+
+    if crop_square:
+        w, h = img.size
+        side = min(w, h)
+        left = (w - side) // 2
+        top = (h - side) // 2
+        img = img.crop((left, top, left + side, top + side))
+        img = img.resize((max_size, max_size), Image.LANCZOS)
+    else:
+        img.thumbnail((max_size, max_size), Image.LANCZOS)
+
+    img.save(dest, "JPEG", quality=JPEG_QUALITY, optimize=True)
+
+
 def build():
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(STATIC_IMG_DIR, exist_ok=True)
 
-    # Clean old generated content
     for f in glob.glob(os.path.join(CONTENT_DIR, "*.md")):
         os.remove(f)
 
@@ -44,18 +65,27 @@ def build():
         cat_name = CATEGORY_MAP.get(cat_dir, cat_dir)
         src_dir = str(Path(yml_path).parent)
 
-        # Copy images
+        # Process images
         hugo_images = []
         img_list = item.get("obrazky") or []
         if not img_list and item.get("obrazek"):
             img_list = [item["obrazek"]]
 
-        for img_rel in img_list:
+        for i, img_rel in enumerate(img_list):
             src = os.path.join(src_dir, img_rel)
-            if os.path.isfile(src):
-                dest_name = os.path.basename(src)
-                shutil.copy2(src, os.path.join(STATIC_IMG_DIR, dest_name))
-                hugo_images.append(f"/imgs/food/{dest_name}")
+            if not os.path.isfile(src):
+                continue
+
+            base = Path(src).stem
+            # Full size (max 800px, readable text)
+            full_name = f"{base}.jpg"
+            resize_image(src, os.path.join(STATIC_IMG_DIR, full_name), FULL_MAX)
+            hugo_images.append(f"/imgs/food/{full_name}")
+
+            # Thumbnail for first image only (300x300 square crop)
+            if i == 0:
+                thumb_name = f"{base}-thumb.jpg"
+                resize_image(src, os.path.join(STATIC_IMG_DIR, thumb_name), THUMB_SIZE, crop_square=True)
 
         # Build front matter
         nutrice = item.get("nutrice", {})
@@ -68,7 +98,6 @@ def build():
         if item.get("popis"):
             fm_lines.append(f'popis: "{item["popis"]}"')
         if item.get("slozeni"):
-            # Escape quotes in slozeni
             slozeni = item["slozeni"].replace('"', '\\"')
             fm_lines.append(f'slozeni: "{slozeni}"')
 
@@ -76,11 +105,13 @@ def build():
         fm_lines.append(f'kategorie_slug: "{cat_dir}"')
 
         if hugo_images:
+            # Thumbnail = first image with -thumb suffix
+            thumb = hugo_images[0].replace(".jpg", "-thumb.jpg")
+            fm_lines.append(f'thumbnail: "{thumb}"')
             fm_lines.append("obrazky:")
             for img in hugo_images:
                 fm_lines.append(f'  - "{img}"')
 
-        # Nutrition fields
         for key in ["energie_kj", "energie_kcal", "bilkoviny", "sacharidy", "cukry",
                      "vlaknina", "tuky", "nasycene_mk", "sul"]:
             val = nutrice.get(key)

@@ -1,5 +1,5 @@
 FROM python:3.12-slim AS build-data
-RUN pip install --no-cache-dir pyyaml
+RUN pip install --no-cache-dir pyyaml pillow
 COPY build.py /src/
 COPY data/ /src/data/
 WORKDIR /src
