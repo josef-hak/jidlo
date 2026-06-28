@@ -255,13 +255,18 @@ def seed(items):
             "INSERT IGNORE INTO wp_term_relationships (object_id, term_taxonomy_id) VALUES (%s, %s)",
             (post_id, tt_id),
         )
-        cur.execute(
-            "UPDATE wp_term_taxonomy SET count = count + 1 WHERE term_taxonomy_id = %s",
-            (tt_id,),
-        )
 
         count += 1
         print(f"  [{count}] {nazev}")
+
+    # Fix term counts
+    for tt_id in term_cache.values():
+        cur.execute(
+            "UPDATE wp_term_taxonomy SET count = "
+            "(SELECT COUNT(*) FROM wp_term_relationships WHERE term_taxonomy_id = %s) "
+            "WHERE term_taxonomy_id = %s",
+            (tt_id, tt_id),
+        )
 
     conn.commit()
     cur.close()
