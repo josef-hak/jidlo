@@ -5,6 +5,7 @@ node_modules/
 .env
 public/
 resources/
+.hugo_build.lock
 content/potravina/
 static/imgs/food/
 fitko-example
