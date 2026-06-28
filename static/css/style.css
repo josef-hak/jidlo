@@ -438,20 +438,20 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .food-detail-slozeni {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border);
+    padding: 0 1.5rem 1rem;
 }
 
 .food-detail-slozeni h3 {
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
 }
 
 .food-detail-slozeni p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-muted);
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .food-detail-notes {
@@ -732,14 +732,16 @@ img { max-width: 100%; height: auto; display: block; }
 
 .food-gallery-viewer {
     position: relative;
-    background: var(--color-accent);
+    background: var(--color-surface);
     border-radius: var(--radius);
     overflow: hidden;
+    aspect-ratio: 1;
 }
 
 .food-gallery-viewer img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 

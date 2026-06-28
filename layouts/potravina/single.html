@@ -32,6 +32,13 @@
         </div>
     </div>
 
+    {{ with .Params.slozeni }}
+        <div class="food-detail-slozeni">
+            <h3>Složení</h3>
+            <p>{{ . }}</p>
+        </div>
+    {{ end }}
+
     {{ if $has_gallery }}
     <div class="food-gallery" id="food-gallery" style="display:none">
         <button class="food-gallery-close" id="gallery-close">&larr; Zpět</button>
@@ -80,7 +87,6 @@
                     {{ if $has_donut }}<td></td>{{ end }}
                 </tr>
 
-                {{/* Nutrition rows: key, label, unit, color, percentage, is_sub */}}
                 {{ $rows := slice
                     (dict "key" "bilkoviny" "label" "Bílkoviny" "unit" "g" "color" "#e05555" "pct" $p_bilk "sub" false)
                     (dict "key" "sacharidy" "label" "Sacharidy" "unit" "g" "color" "#5588dd" "pct" $p_sach "sub" false)
@@ -135,13 +141,6 @@
         </div>
         {{ end }}
 
-        {{ with .Params.slozeni }}
-            <div class="food-detail-slozeni">
-                <h3>Složení</h3>
-                <p>{{ . }}</p>
-            </div>
-        {{ end }}
-
         {{ if .Content }}
             <div class="food-detail-notes">
                 <h3>Poznámky</h3>
@@ -176,7 +175,7 @@
 
     trigger.addEventListener('click', function() {
         galleryEl.style.display = '';
-        show(0);
+        show(urls.length > 1 ? 1 : 0);
     });
 
     close.addEventListener('click', function() {
