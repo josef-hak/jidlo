@@ -227,16 +227,16 @@ img { max-width: 100%; height: auto; display: block; }
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.food-card[data-category="maso-a-uzeniny"]    { background: var(--cat-maso-bg); border: 1px solid var(--cat-maso-border); }
-.food-card[data-category="mlecne-vyrobky"]     { background: var(--cat-mleko-bg); border: 1px solid var(--cat-mleko-border); }
-.food-card[data-category="pecivo-a-obiloviny"] { background: var(--cat-pecivo-bg); border: 1px solid var(--cat-pecivo-border); }
-.food-card[data-category="lusteniny-a-orechy"] { background: var(--cat-lusteniny-bg); border: 1px solid var(--cat-lusteniny-border); }
-.food-card[data-category="zelenina"]           { background: var(--cat-zelenina-bg); border: 1px solid var(--cat-zelenina-border); }
-.food-card[data-category="ovoce"]              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
-.food-card[data-category="napoje"]             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
-.food-card[data-category="sladkosti"]          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
-.food-card[data-category="veganske"] { background: var(--cat-rostlinne-bg); border: 1px solid var(--cat-rostlinne-border); }
-.food-card[data-category="ostatni"]            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
+.food-card[data-category="maso-a-uzeniny"]    { border: 1px solid var(--cat-maso-border); }
+.food-card[data-category="mlecne-vyrobky"]     { border: 1px solid var(--cat-mleko-border); }
+.food-card[data-category="pecivo-a-obiloviny"] { border: 1px solid var(--cat-pecivo-border); }
+.food-card[data-category="lusteniny-a-orechy"] { border: 1px solid var(--cat-lusteniny-border); }
+.food-card[data-category="zelenina"]           { border: 1px solid var(--cat-zelenina-border); }
+.food-card[data-category="ovoce"]              { border: 1px solid var(--cat-ovoce-border); }
+.food-card[data-category="napoje"]             { border: 1px solid var(--cat-napoje-border); }
+.food-card[data-category="sladkosti"]          { border: 1px solid var(--cat-sladkosti-border); }
+.food-card[data-category="veganske"]           { border: 1px solid var(--cat-rostlinne-border); }
+.food-card[data-category="ostatni"]            { border: 1px solid var(--cat-ostatni-border); }
 
 .food-card a {
     color: inherit;
@@ -325,16 +325,16 @@ img { max-width: 100%; height: auto; display: block; }
     overflow: hidden;
 }
 
-.food-detail.cat-detail-maso-a-uzeniny    { background: var(--cat-maso-bg); border: 1px solid var(--cat-maso-border); }
-.food-detail.cat-detail-mlecne-vyrobky     { background: var(--cat-mleko-bg); border: 1px solid var(--cat-mleko-border); }
-.food-detail.cat-detail-pecivo-a-obiloviny { background: var(--cat-pecivo-bg); border: 1px solid var(--cat-pecivo-border); }
-.food-detail.cat-detail-lusteniny-a-orechy { background: var(--cat-lusteniny-bg); border: 1px solid var(--cat-lusteniny-border); }
-.food-detail.cat-detail-zelenina           { background: var(--cat-zelenina-bg); border: 1px solid var(--cat-zelenina-border); }
-.food-detail.cat-detail-ovoce              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
-.food-detail.cat-detail-napoje             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
-.food-detail.cat-detail-sladkosti          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
-.food-detail.cat-detail-veganske { background: var(--cat-rostlinne-bg); border: 1px solid var(--cat-rostlinne-border); }
-.food-detail.cat-detail-ostatni            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
+.food-detail.cat-detail-maso-a-uzeniny    { border: 1px solid var(--cat-maso-border); }
+.food-detail.cat-detail-mlecne-vyrobky     { border: 1px solid var(--cat-mleko-border); }
+.food-detail.cat-detail-pecivo-a-obiloviny { border: 1px solid var(--cat-pecivo-border); }
+.food-detail.cat-detail-lusteniny-a-orechy { border: 1px solid var(--cat-lusteniny-border); }
+.food-detail.cat-detail-zelenina           { border: 1px solid var(--cat-zelenina-border); }
+.food-detail.cat-detail-ovoce              { border: 1px solid var(--cat-ovoce-border); }
+.food-detail.cat-detail-napoje             { border: 1px solid var(--cat-napoje-border); }
+.food-detail.cat-detail-sladkosti          { border: 1px solid var(--cat-sladkosti-border); }
+.food-detail.cat-detail-veganske           { border: 1px solid var(--cat-rostlinne-border); }
+.food-detail.cat-detail-ostatni            { border: 1px solid var(--cat-ostatni-border); }
 
 .food-detail-header {
     display: flex;
