@@ -1,14 +1,17 @@
-nazev: Sýr Ementaler Milbona
+nazev: Sýr Emmentaler Milbona
 znacka: Milbona (Lidl)
-popis: "Ementálský sýr, 45 % tuku v sušině."
-obrazek:
+popis: "Ementál, sýr plátky. Obsah tuku v sušině min. 45 %."
+slozeni: "Pasterované mléko, jedlá sůl, mikrobiální syřidlo, sýrařské kultury (obsahují mléko)."
+obrazky:
+  - imgs/milbona-emmentaler-produkt.jpg
+  - imgs/milbona-emmentaler-nutrice.jpg
 nutrice:
-  energie_kj: 1625
-  energie_kcal: 388
-  bilkoviny: 27
+  energie_kj: 1536
+  energie_kcal: 370
+  bilkoviny: 28.2
   sacharidy: 0.1
-  cukry:
-  vlaknina:
-  tuky: 27
-  nasycene_mk: 21
-  sul:
+  cukry: 0.1
+  vlaknina: 0
+  tuky: 28.5
+  nasycene_mk: 20.0
+  sul: 0.70

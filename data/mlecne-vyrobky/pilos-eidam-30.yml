@@ -1,0 +1,17 @@
+nazev: Pilos Eidam 30% plátky
+znacka: Pilos (Lidl)
+popis: "Eidam, polotvrdý polotučný sýr, plátky. Obsah tuku v sušině min. 30 %."
+slozeni: "Mléko, jedlá sůl, mlékarenské kultury, mikrobiální syřidlo."
+obrazky:
+  - imgs/pilos-eidam-30-produkt.jpg
+  - imgs/pilos-eidam-30-nutrice.jpg
+nutrice:
+  energie_kj: 1100
+  energie_kcal: 263
+  bilkoviny: 27.0
+  sacharidy: 0.5
+  cukry: 0.5
+  vlaknina:
+  tuky: 17.0
+  nasycene_mk:
+  sul: 1.50

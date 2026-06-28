@@ -1,0 +1,17 @@
+nazev: Madeta Jihočeské máslo
+znacka: Madeta
+popis: "Jihočeské máslo, obsah tuku 82 %. Český výrobek."
+slozeni: "Máslo."
+obrazky:
+  - imgs/madeta-maslo-produkt.jpg
+  - imgs/madeta-maslo-nutrice.jpg
+nutrice:
+  energie_kj: 3061
+  energie_kcal: 744
+  bilkoviny: 0.8
+  sacharidy: 0.8
+  cukry: 0.8
+  vlaknina:
+  tuky: 82
+  nasycene_mk: 54
+  sul: 0.02

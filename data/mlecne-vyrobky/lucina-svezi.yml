@@ -1,0 +1,17 @@
+nazev: Lučina Svěží
+znacka: Lučina
+popis: "Čerstvý tvarohový sýr, termizovaný. 99 % tvaroh."
+slozeni: "Tvaroh 99 % (mléko, smetana, mléčné kultury, syřidlo), sůl."
+obrazky:
+  - imgs/lucina-svezi-produkt.jpg
+  - imgs/lucina-svezi-nutrice.jpg
+nutrice:
+  energie_kj: 972
+  energie_kcal: 235
+  bilkoviny: 5.9
+  sacharidy: 3.4
+  cukry: 3.3
+  vlaknina:
+  tuky: 22
+  nasycene_mk: 15
+  sul: 0.62

@@ -4,8 +4,8 @@ popis: "Bio selský jogurt s kulturou BiFi, 3,8 % tuku. Zraje přímo v kelímku
 slozeni: "BIO mléko, BIO mléčná bílkovina, jogurtová kultura, Bifidobacterium a Lactobacillus acidophilus."
 obrazky:
   - imgs/hollandia-bio-produkt.jpg
-  - imgs/hollandia-bio-slozeni.jpg
   - imgs/hollandia-bio-slozeni2.jpg
+  - imgs/hollandia-bio-slozeni.jpg
 nutrice:
   energie_kj: 282
   energie_kcal: 67

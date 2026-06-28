@@ -1,0 +1,17 @@
+nazev: Flora Omega Light
+znacka: Flora
+popis: "Rostlinný roztíratelný tuk 28 %. Vegan, bez palmového oleje, bohatý na Omega-3."
+slozeni: "Pitná voda, rostlinné oleje (řepkový, slunečnicový, lněný), kokosový tuk, sůl (0,5 %), emulgátor (mono- a diglyceridy mastných kyselin), regulátor kyselosti (kyselina citronová), přírodní aroma, vitamíny (A, D)."
+obrazky:
+  - imgs/flora-omega-light-produkt.jpg
+  - imgs/flora-omega-light-nutrice.jpg
+nutrice:
+  energie_kj: 1036
+  energie_kcal: 252
+  bilkoviny: 0
+  sacharidy: 0
+  cukry: 0
+  vlaknina:
+  tuky: 28
+  nasycene_mk: 6.2
+  sul: 0.5

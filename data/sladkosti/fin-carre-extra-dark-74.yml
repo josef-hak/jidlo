@@ -4,8 +4,8 @@ popis: "Hořká čokoláda se sníženým obsahem cukru, 74 % kakaa. Fairtrade."
 slozeni: "Kakaová hmota, cukr, kakaové máslo, kakaový prášek se sníženým obsahem tuku, emulgátor: lecitin, přírodní vanilkové aroma."
 obrazky:
   - imgs/fin-carre-extra-dark-74-produkt.jpg
-  - imgs/fin-carre-extra-dark-74-slozeni.jpg
   - imgs/fin-carre-extra-dark-74-nutrice.jpg
+  - imgs/fin-carre-extra-dark-74-slozeni.jpg
 nutrice:
   energie_kj: 2367
   energie_kcal: 571
