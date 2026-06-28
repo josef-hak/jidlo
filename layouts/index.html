@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<div class="catalog-header">
+    <h1>Katalog potravin</h1>
+    <input type="search" class="catalog-search" id="food-search" placeholder="Hledat potravinu...">
+
+    {{ $categories := dict
+        "maso-a-uzeniny" "Maso a uzeniny"
+        "mlecne-vyrobky" "Mléčné výrobky"
+        "ovoce" "Ovoce"
+        "zelenina" "Zelenina"
+        "pecivo-a-obiloviny" "Pečivo a obiloviny"
+        "lusteniny-a-orechy" "Luštěniny a ořechy"
+        "napoje" "Nápoje"
+        "sladkosti" "Sladkosti"
+        "veganske" "Veganské"
+        "ostatni" "Ostatní"
+    }}
+    <div class="catalog-filters">
+        <button class="filter-pill active" data-category="">Vše</button>
+        {{ range $slug, $name := $categories }}
+        <button class="filter-pill" data-category="{{ $slug }}">{{ $name }}</button>
+        {{ end }}
+    </div>
+</div>
+
+<div class="catalog-grid">
+    {{ $pages := where .Site.RegularPages "Type" "potravina" }}
+    {{ if $pages }}
+        {{ range $pages }}
+            {{ partial "food-card.html" . }}
+        {{ end }}
+    {{ else }}
+        <div class="catalog-empty">
+            <p>Zatím žádné potraviny.</p>
+        </div>
+    {{ end }}
+</div>
+
+<script src="/js/catalog.js"></script>
+{{ end }}

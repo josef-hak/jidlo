@@ -1,0 +1,7 @@
+baseURL = "/"
+languageCode = "cs"
+title = "Jídlo"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[pagination]
+  pagerSize = 100

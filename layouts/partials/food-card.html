@@ -1,0 +1,61 @@
+{{ $kcal := .Params.energie_kcal }}
+{{ $protein := default 0.0 (float .Params.bilkoviny) }}
+{{ $carbs := default 0.0 (float .Params.sacharidy) }}
+{{ $fat := default 0.0 (float .Params.tuky) }}
+{{ $brand := .Params.znacka }}
+{{ $cat_slug := .Params.kategorie_slug }}
+{{ $images := .Params.obrazky }}
+
+{{ $total := add (add $protein $carbs) $fat }}
+{{ $p_bilk := 0.0 }}{{ $p_sach := 0.0 }}{{ $p_tuky := 0.0 }}
+{{ if gt $total 0.0 }}
+    {{ $p_bilk = mul (div $protein $total) 100 }}
+    {{ $p_sach = mul (div $carbs $total) 100 }}
+    {{ $p_tuky = mul (div $fat $total) 100 }}
+{{ end }}
+
+<div class="food-card" data-category="{{ $cat_slug }}">
+    <a href="{{ .RelPermalink }}">
+        <div class="food-card-visual">
+            <div class="food-card-image">
+                {{ if $images }}
+                    <img src="{{ index $images 0 }}" alt="{{ .Title }}" loading="lazy">
+                {{ else }}
+                    <img src="/imgs/{{ $cat_slug }}.svg" alt="" loading="lazy">
+                {{ end }}
+            </div>
+            {{ if gt $total 0.0 }}
+            <div class="food-card-donut">
+                <svg viewBox="0 0 42 42">
+                    <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e8e8e8" stroke-width="5"/>
+                    {{ $o1 := 0.0 }}
+                    {{ $o2 := $p_bilk }}
+                    {{ $o3 := add $p_bilk $p_sach }}
+                    {{ range $i, $seg := (slice
+                        (dict "val" $p_bilk "color" "#e05555" "off" $o1)
+                        (dict "val" $p_sach "color" "#5588dd" "off" $o2)
+                        (dict "val" $p_tuky "color" "#eebb44" "off" $o3)
+                    ) }}
+                        {{ if ge .val 0.5 }}
+                        <circle cx="21" cy="21" r="15.9" fill="none"
+                            stroke="{{ .color }}" stroke-width="5"
+                            stroke-dasharray="{{ printf "%.1f" .val }} {{ printf "%.1f" (sub 100 .val) }}"
+                            stroke-dashoffset="{{ printf "%.1f" (add (sub 100 .off) 25) }}"/>
+                        {{ end }}
+                    {{ end }}
+                </svg>
+            </div>
+            {{ end }}
+        </div>
+        <div class="food-card-body">
+            <div class="food-card-title">{{ .Title }}</div>
+            {{ with $brand }}<div class="food-card-brand">{{ . }}</div>{{ end }}
+            <div class="food-card-macros">
+                <div><span class="macro-value">{{ with $kcal }}{{ . }}{{ else }}—{{ end }}</span><span class="macro-label">kcal</span></div>
+                <div style="background:#e0555515"><span class="macro-value">{{ if gt $protein 0.0 }}{{ $protein }}{{ else }}—{{ end }}</span><span class="macro-label">bílk.</span></div>
+                <div style="background:#5588dd15"><span class="macro-value">{{ if gt $carbs 0.0 }}{{ $carbs }}{{ else }}—{{ end }}</span><span class="macro-label">sach.</span></div>
+                <div style="background:#eebb4415"><span class="macro-value">{{ if gt $fat 0.0 }}{{ $fat }}{{ else }}—{{ end }}</span><span class="macro-label">tuky</span></div>
+            </div>
+        </div>
+    </a>
+</div>

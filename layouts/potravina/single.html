@@ -1,0 +1,192 @@
+{{ define "main" }}
+
+{{ $cat_slug := .Params.kategorie_slug }}
+{{ $images := .Params.obrazky }}
+{{ $has_gallery := and $images (gt (len $images) 0) }}
+
+<a href="/" class="back-link">&larr; Zpět na katalog</a>
+
+<div class="food-detail cat-detail-{{ $cat_slug }}">
+    <div class="food-detail-header" id="detail-header">
+        <div class="food-detail-icon-wrap{{ if $has_gallery }} has-gallery{{ end }}" id="gallery-trigger">
+            {{ if $images }}
+                <img src="{{ index $images 0 }}" alt="{{ .Title }}">
+            {{ else }}
+                <img src="/imgs/{{ $cat_slug }}.svg" alt="">
+            {{ end }}
+        </div>
+        <div class="food-detail-info">
+            <h1 class="food-detail-title">{{ .Title }}</h1>
+
+            {{ with .Params.znacka }}
+                <div class="food-detail-brand">{{ . }}</div>
+            {{ end }}
+
+            {{ with .Params.kategorie }}
+                <span class="food-detail-category cat-{{ $cat_slug }}">{{ . }}</span>
+            {{ end }}
+
+            {{ with .Params.popis }}
+                <p class="food-detail-description">{{ . }}</p>
+            {{ end }}
+        </div>
+    </div>
+
+    {{ if $has_gallery }}
+    <div class="food-gallery" id="food-gallery" style="display:none">
+        <button class="food-gallery-close" id="gallery-close">&larr; Zpět</button>
+        <div class="food-gallery-viewer">
+            <img id="gallery-img" src="" alt="">
+            <button class="food-gallery-nav prev" id="gallery-prev">&lsaquo;</button>
+            <button class="food-gallery-nav next" id="gallery-next">&rsaquo;</button>
+        </div>
+        <div class="food-gallery-counter" id="gallery-counter"></div>
+    </div>
+    {{ end }}
+
+    <div class="food-detail-body" id="detail-body">
+        {{/* Compute macro percentages */}}
+        {{ $d_bilk := default 0.0 (float .Params.bilkoviny) }}
+        {{ $d_sach := default 0.0 (float .Params.sacharidy) }}
+        {{ $d_cukry := default 0.0 (float .Params.cukry) }}
+        {{ $d_tuky := default 0.0 (float .Params.tuky) }}
+        {{ $d_nmk := default 0.0 (float .Params.nasycene_mk) }}
+        {{ $d_total := add (add $d_bilk $d_sach) $d_tuky }}
+        {{ $has_donut := gt $d_total 0.0 }}
+
+        {{ $p_bilk := 0.0 }}{{ $p_sach := 0.0 }}{{ $p_tuky := 0.0 }}
+        {{ $p_cukry := 0.0 }}{{ $p_nmk := 0.0 }}
+        {{ $p_sach_rest := 0.0 }}{{ $p_tuky_rest := 0.0 }}
+        {{ if $has_donut }}
+            {{ $p_bilk = mul (div $d_bilk $d_total) 100 }}
+            {{ $p_sach = mul (div $d_sach $d_total) 100 }}
+            {{ $p_tuky = mul (div $d_tuky $d_total) 100 }}
+            {{ $p_cukry = mul (div $d_cukry $d_total) 100 }}
+            {{ $p_sach_rest = sub $p_sach $p_cukry }}
+            {{ $p_nmk = mul (div $d_nmk $d_total) 100 }}
+            {{ $p_tuky_rest = sub $p_tuky $p_nmk }}
+        {{ end }}
+
+        <table class="nutrition-table">
+            <caption>Nutriční hodnoty na 100 g</caption>
+            <tbody>
+                <tr>
+                    <th>Energetická hodnota</th>
+                    <td>
+                        {{ with .Params.energie_kj }}{{ . }} kJ{{ end }}
+                        {{ with .Params.energie_kcal }}({{ . }} kcal){{ end }}
+                        {{ if and (not .Params.energie_kj) (not .Params.energie_kcal) }}—{{ end }}
+                    </td>
+                    {{ if $has_donut }}<td></td>{{ end }}
+                </tr>
+
+                {{/* Nutrition rows: key, label, unit, color, percentage, is_sub */}}
+                {{ $rows := slice
+                    (dict "key" "bilkoviny" "label" "Bílkoviny" "unit" "g" "color" "#e05555" "pct" $p_bilk "sub" false)
+                    (dict "key" "sacharidy" "label" "Sacharidy" "unit" "g" "color" "#5588dd" "pct" $p_sach "sub" false)
+                    (dict "key" "cukry" "label" "— z toho cukry" "unit" "g" "color" "#2255aa" "pct" $p_cukry "sub" true)
+                    (dict "key" "vlaknina" "label" "Vláknina" "unit" "g" "color" "#aaccee" "pct" 0 "sub" false)
+                    (dict "key" "tuky" "label" "Tuky" "unit" "g" "color" "#eebb44" "pct" $p_tuky "sub" false)
+                    (dict "key" "nasycene_mk" "label" "— z toho nasycené mastné kyseliny" "unit" "g" "color" "#cc9922" "pct" $p_nmk "sub" true)
+                    (dict "key" "sul" "label" "Sůl" "unit" "g" "color" "" "pct" 0 "sub" false)
+                }}
+
+                {{ range $rows }}
+                    {{ $val := index $.Params .key }}
+                    {{ $bg := "" }}
+                    {{ if and $has_donut .color }}{{ $bg = printf "background:%s15" .color }}{{ end }}
+                <tr{{ if .sub }} class="sub"{{ end }}{{ if $bg }} style="{{ $bg }}"{{ end }}>
+                    <th>{{ .label }}</th>
+                    <td>{{ if $val }}{{ $val }} {{ .unit }}{{ else }}—{{ end }}</td>
+                    {{ if $has_donut }}
+                        <td class="nutri-pct">{{ if and .color (gt .pct 0.0) }}{{ printf "%.0f" .pct }} %{{ end }}</td>
+                    {{ end }}
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+
+        {{ if $has_donut }}
+        {{ $o1 := 0.0 }}
+        {{ $o2 := $p_bilk }}
+        {{ $o3 := add $o2 $p_sach_rest }}
+        {{ $o4 := add $o3 $p_cukry }}
+        {{ $o5 := add $o4 $p_tuky_rest }}
+        <div class="donut-section">
+            <div class="donut-chart">
+                <svg viewBox="0 0 42 42">
+                    <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e8e8e8" stroke-width="5"/>
+                    {{ range $seg := (slice
+                        (dict "val" $p_bilk "color" "#e05555" "off" $o1)
+                        (dict "val" $p_sach_rest "color" "#5588dd" "off" $o2)
+                        (dict "val" $p_cukry "color" "#2255aa" "off" $o3)
+                        (dict "val" $p_tuky_rest "color" "#eebb44" "off" $o4)
+                        (dict "val" $p_nmk "color" "#cc9922" "off" $o5)
+                    ) }}
+                        {{ if ge .val 0.5 }}
+                        <circle cx="21" cy="21" r="15.9" fill="none"
+                            stroke="{{ .color }}" stroke-width="5"
+                            stroke-dasharray="{{ printf "%.1f" .val }} {{ printf "%.1f" (sub 100 .val) }}"
+                            stroke-dashoffset="{{ printf "%.1f" (add (sub 100 .off) 25) }}"/>
+                        {{ end }}
+                    {{ end }}
+                </svg>
+            </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.slozeni }}
+            <div class="food-detail-slozeni">
+                <h3>Složení</h3>
+                <p>{{ . }}</p>
+            </div>
+        {{ end }}
+
+        {{ if .Content }}
+            <div class="food-detail-notes">
+                <h3>Poznámky</h3>
+                {{ .Content }}
+            </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ if $has_gallery }}
+<script>
+(function() {
+    var urls = [{{ range $i, $img := $images }}{{ if $i }},{{ end }}"{{ $img }}"{{ end }}];
+    if (!urls.length) return;
+
+    var trigger = document.getElementById('gallery-trigger');
+    var galleryEl = document.getElementById('food-gallery');
+    var close = document.getElementById('gallery-close');
+    var img = document.getElementById('gallery-img');
+    var counter = document.getElementById('gallery-counter');
+    var prev = document.getElementById('gallery-prev');
+    var next = document.getElementById('gallery-next');
+    var idx = 0;
+
+    function show(i) {
+        idx = (i + urls.length) % urls.length;
+        img.src = urls[idx];
+        counter.textContent = (idx + 1) + ' / ' + urls.length;
+        prev.style.display = urls.length > 1 ? '' : 'none';
+        next.style.display = urls.length > 1 ? '' : 'none';
+    }
+
+    trigger.addEventListener('click', function() {
+        galleryEl.style.display = '';
+        show(0);
+    });
+
+    close.addEventListener('click', function() {
+        galleryEl.style.display = 'none';
+    });
+
+    prev.addEventListener('click', function() { show(idx - 1); });
+    next.addEventListener('click', function() { show(idx + 1); });
+})();
+</script>
+{{ end }}
+
+{{ end }}

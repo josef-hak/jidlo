@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/imgs/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>{{ if .IsHome }}{{ .Site.Title }} — Katalog potravin{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="/" class="site-title">{{ .Site.Title }}</a>
+</header>
+
+<main class="site-content">
+    {{ block "main" . }}{{ end }}
+</main>
+
+<footer class="site-footer">
+    <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
+</footer>
+
+</body>
+</html>
