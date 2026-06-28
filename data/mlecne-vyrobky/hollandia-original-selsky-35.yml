@@ -5,13 +5,14 @@ slozeni: "Mléko, mléčná bílkovina, jogurtová kultura, Bifidobacterium a La
 obrazky:
   - imgs/hollandia-original-35-produkt.jpg
   - imgs/hollandia-original-35-slozeni.jpg
+  - imgs/hollandia-original-35-slozeni2.jpg
 nutrice:
   energie_kj: 279
   energie_kcal: 67
-  bilkoviny: 3.5
+  bilkoviny: 3.9
   sacharidy: 4.4
   cukry: 4.4
   vlaknina:
-  tuky: 3.8
+  tuky: 3.7
   nasycene_mk: 2.6
   sul: 0.10

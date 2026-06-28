@@ -1,0 +1,17 @@
+nazev: Pikok Pure Pečená šunka 96%
+znacka: Pikok Pure (Lidl)
+popis: "Vepřová pečená šunka nejvyšší jakosti, 96 % masa."
+slozeni: "96 % vepřová kýta, pitná voda, jedlá sůl, mangold, acerola, mrkev, rozmarýn, aroma, přírodní citrusové aroma, zrací kultura, cibule."
+obrazky:
+  - imgs/pikok-pecena-sunka-produkt.jpg
+  - imgs/pikok-pecena-sunka-slozeni.jpg
+nutrice:
+  energie_kj: 694
+  energie_kcal: 166
+  bilkoviny: 18.5
+  sacharidy: 0.5
+  cukry: 0.4
+  vlaknina: 0.1
+  tuky: 10.0
+  nasycene_mk: 2.8
+  sul: 2.10

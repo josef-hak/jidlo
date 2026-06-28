@@ -1,0 +1,18 @@
+nazev: Fin Carré Extra Dark 74%
+znacka: Fin Carré (Lidl)
+popis: "Hořká čokoláda se sníženým obsahem cukru, 74 % kakaa. Fairtrade."
+slozeni: "Kakaová hmota, cukr, kakaové máslo, kakaový prášek se sníženým obsahem tuku, emulgátor: lecitin, přírodní vanilkové aroma."
+obrazky:
+  - imgs/fin-carre-extra-dark-74-produkt.jpg
+  - imgs/fin-carre-extra-dark-74-slozeni.jpg
+  - imgs/fin-carre-extra-dark-74-nutrice.jpg
+nutrice:
+  energie_kj: 2367
+  energie_kcal: 571
+  bilkoviny: 9.9
+  sacharidy: 33.0
+  cukry: 26.0
+  vlaknina: 12.5
+  tuky: 42.0
+  nasycene_mk: 26.0
+  sul: 0.02

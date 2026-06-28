@@ -1,0 +1,17 @@
+nazev: Pikok Pure Kuřecí prsní šunka 92%
+znacka: Pikok Pure (Lidl)
+popis: "Kuřecí prsní šunka nejvyšší jakosti, 92 % kuřecích prsou."
+slozeni: "92 % kuřecí prsa, pitná voda, jedlá sůl, mangold, acerola, mrkev, rozmarýn, přírodní aroma z citrusů, zrací kultura."
+obrazky:
+  - imgs/pikok-kureci-prsni-produkt.jpg
+  - imgs/pikok-kureci-prsni-slozeni.jpg
+nutrice:
+  energie_kj: 386
+  energie_kcal: 91
+  bilkoviny: 19.3
+  sacharidy: 0.5
+  cukry: 0.4
+  vlaknina: 0.1
+  tuky: 1.3
+  nasycene_mk: 0.4
+  sul: 1.70
