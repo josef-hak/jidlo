@@ -113,15 +113,9 @@ def get_or_create_term(cur, name, taxonomy="kategorie_potravin"):
     return cur.lastrowid
 
 
-def wait_for_wp_filesystem():
-    """Wait until WordPress has initialized wp-content directory."""
-    wp_content = os.path.join(WP_UPLOADS, "..")
-    for attempt in range(60):
-        if os.path.isdir(wp_content):
-            return
-        print(f"  Waiting for wp-content... ({attempt + 1})")
-        time.sleep(3)
-    raise RuntimeError("wp-content not ready after 3 minutes")
+def ensure_uploads_dir():
+    """Ensure wp-content/uploads directory exists."""
+    os.makedirs(WP_UPLOADS, exist_ok=True)
 
 
 def import_image(cur, image_path, post_id, now_str):
@@ -185,7 +179,7 @@ def load_items():
 def seed(items):
     conn = get_connection()
     wait_for_wp_tables(conn)
-    wait_for_wp_filesystem()
+    ensure_uploads_dir()
     cur = conn.cursor()
 
     term_cache = {}
