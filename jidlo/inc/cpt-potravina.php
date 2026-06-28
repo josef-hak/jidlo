@@ -55,6 +55,7 @@ function jidlo_create_default_categories() {
         'Luštěniny a ořechy',
         'Nápoje',
         'Sladkosti',
+        'Veganské',
         'Ostatní',
     ];
 

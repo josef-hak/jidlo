@@ -48,6 +48,9 @@ Text Domain: jidlo
     --cat-sladkosti: #8e5a7a;
     --cat-sladkosti-bg: #f4e8f0;
     --cat-sladkosti-border: #d0a8c4;
+    --cat-rostlinne: #7a50a0;
+    --cat-rostlinne-bg: #f2ecf8;
+    --cat-rostlinne-border: #c4a8d8;
     --cat-ostatni: #8c8070;
     --cat-ostatni-bg: #f0eee8;
     --cat-ostatni-border: #c8c0b8;
@@ -169,6 +172,7 @@ img { max-width: 100%; height: auto; display: block; }
 .filter-pill[data-category="ovoce"]              { border-color: var(--cat-ovoce-border); color: var(--cat-ovoce); }
 .filter-pill[data-category="napoje"]             { border-color: var(--cat-napoje-border); color: var(--cat-napoje); }
 .filter-pill[data-category="sladkosti"]          { border-color: var(--cat-sladkosti-border); color: var(--cat-sladkosti); }
+.filter-pill[data-category="veganske"] { border-color: var(--cat-rostlinne-border); color: var(--cat-rostlinne); }
 .filter-pill[data-category="ostatni"]            { border-color: var(--cat-ostatni-border); color: var(--cat-ostatni); }
 
 .filter-pill[data-category="maso-a-uzeniny"].active    { background: var(--cat-maso); color: white; border-color: var(--cat-maso); }
@@ -179,6 +183,7 @@ img { max-width: 100%; height: auto; display: block; }
 .filter-pill[data-category="ovoce"].active              { background: var(--cat-ovoce); color: white; border-color: var(--cat-ovoce); }
 .filter-pill[data-category="napoje"].active             { background: var(--cat-napoje); color: white; border-color: var(--cat-napoje); }
 .filter-pill[data-category="sladkosti"].active          { background: var(--cat-sladkosti); color: white; border-color: var(--cat-sladkosti); }
+.filter-pill[data-category="veganske"].active { background: var(--cat-rostlinne); color: white; border-color: var(--cat-rostlinne); }
 .filter-pill[data-category="ostatni"].active            { background: var(--cat-ostatni); color: white; border-color: var(--cat-ostatni); }
 
 .filter-pill.active {
@@ -230,6 +235,7 @@ img { max-width: 100%; height: auto; display: block; }
 .food-card[data-category="ovoce"]              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
 .food-card[data-category="napoje"]             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
 .food-card[data-category="sladkosti"]          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
+.food-card[data-category="veganske"] { background: var(--cat-rostlinne-bg); border: 1px solid var(--cat-rostlinne-border); }
 .food-card[data-category="ostatni"]            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
 
 .food-card a {
@@ -327,6 +333,7 @@ img { max-width: 100%; height: auto; display: block; }
 .food-detail.cat-detail-ovoce              { background: var(--cat-ovoce-bg); border: 1px solid var(--cat-ovoce-border); }
 .food-detail.cat-detail-napoje             { background: var(--cat-napoje-bg); border: 1px solid var(--cat-napoje-border); }
 .food-detail.cat-detail-sladkosti          { background: var(--cat-sladkosti-bg); border: 1px solid var(--cat-sladkosti-border); }
+.food-detail.cat-detail-veganske { background: var(--cat-rostlinne-bg); border: 1px solid var(--cat-rostlinne-border); }
 .food-detail.cat-detail-ostatni            { background: var(--cat-ostatni-bg); border: 1px solid var(--cat-ostatni-border); }
 
 .food-detail-header {
@@ -388,6 +395,7 @@ img { max-width: 100%; height: auto; display: block; }
 .food-detail-category.cat-ovoce              { background: var(--cat-ovoce-bg); color: var(--cat-ovoce); border: 1px solid var(--cat-ovoce-border); }
 .food-detail-category.cat-napoje             { background: var(--cat-napoje-bg); color: var(--cat-napoje); border: 1px solid var(--cat-napoje-border); }
 .food-detail-category.cat-sladkosti          { background: var(--cat-sladkosti-bg); color: var(--cat-sladkosti); border: 1px solid var(--cat-sladkosti-border); }
+.food-detail-category.cat-veganske { background: var(--cat-rostlinne-bg); color: var(--cat-rostlinne); border: 1px solid var(--cat-rostlinne-border); }
 .food-detail-category.cat-ostatni            { background: var(--cat-ostatni-bg); color: var(--cat-ostatni); border: 1px solid var(--cat-ostatni-border); }
 
 .food-detail-description {

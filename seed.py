@@ -45,6 +45,7 @@ CATEGORY_MAP = {
     "lusteniny-a-orechy": "Luštěniny a ořechy",
     "napoje": "Nápoje",
     "sladkosti": "Sladkosti",
+    "rostlinne-alternativy": "Veganské",
     "ostatni": "Ostatní",
 }
 
