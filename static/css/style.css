@@ -754,33 +754,10 @@ img { max-width: 100%; height: auto; display: block; }
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: top;
     display: block;
-}
-
-.food-gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.85);
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    font-size: 1.2rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow);
-    color: var(--color-text);
 }
-
-.food-gallery-nav:hover {
-    background: white;
-}
-
-.food-gallery-nav.prev { left: 0.5rem; }
-.food-gallery-nav.next { right: 0.5rem; }
 
 .food-gallery-counter {
     text-align: center;
