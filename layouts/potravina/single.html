@@ -23,7 +23,7 @@
             {{ end }}
 
             {{ with .Params.kategorie }}
-                <span class="food-detail-category cat-{{ $cat_slug }}">{{ . }}</span>
+                <span class="food-detail-category cat-{{ $cat_slug }}"><span class="cat-icon" style="--icon:url(/imgs/cat/{{ $cat_slug }}.svg)"></span> {{ . }}</span>
             {{ end }}
 
             {{ with .Params.popis }}
