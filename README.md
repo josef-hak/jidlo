@@ -6,10 +6,10 @@ Osobní web pro evidenci potravin s nutričními hodnotami. Staticky generováno
 
 ```bash
 # 1. Generovat content z YAML dat
-docker compose -f docker-compose.hugo.yml --profile build run --rm build-data
+docker compose --profile build run --rm build-data
 
 # 2. Spustit dev server
-docker compose -f docker-compose.hugo.yml up hugo
+docker compose up hugo
 ```
 
 Web: http://localhost:8080
@@ -24,8 +24,8 @@ znacka: Výrobce
 popis: "Krátký popis."
 slozeni: "Složení produktu."
 obrazky:
-  - imgs/foto-produkt.jpg
   - imgs/foto-slozeni.jpg
+  - imgs/foto-produkt.jpg
 nutrice:
   energie_kj: 0
   energie_kcal: 0
