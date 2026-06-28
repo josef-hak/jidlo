@@ -112,9 +112,21 @@ def get_or_create_term(cur, name, taxonomy="kategorie_potravin"):
     return cur.lastrowid
 
 
+def wait_for_wp_filesystem():
+    """Wait until WordPress has initialized wp-content directory."""
+    wp_content = os.path.join(WP_UPLOADS, "..")
+    for attempt in range(60):
+        if os.path.isdir(wp_content):
+            return
+        print(f"  Waiting for wp-content... ({attempt + 1})")
+        time.sleep(3)
+    raise RuntimeError("wp-content not ready after 3 minutes")
+
+
 def import_image(cur, image_path, post_id, now_str):
     """Copy image to wp-content/uploads and create attachment post. Returns attachment ID."""
     if not os.path.isfile(image_path):
+        print(f"    [img] Not found: {image_path}")
         return None
 
     ext = os.path.splitext(image_path)[1].lower()
@@ -133,6 +145,7 @@ def import_image(cur, image_path, post_id, now_str):
         dest = os.path.join(upload_dir, filename)
 
     shutil.copy2(image_path, dest)
+    print(f"    [img] {os.path.basename(image_path)} -> {dest}")
     rel_path = f"{upload_subdir}/{filename}"
 
     cur.execute(
@@ -171,6 +184,7 @@ def load_items():
 def seed(items):
     conn = get_connection()
     wait_for_wp_tables(conn)
+    wait_for_wp_filesystem()
     cur = conn.cursor()
 
     term_cache = {}
@@ -274,7 +288,47 @@ def seed(items):
     print(f"\nSeeding done! Created {count} food items.")
 
 
+def purge():
+    """Delete all potravina posts and their attachments."""
+    conn = get_connection()
+    wait_for_wp_tables(conn)
+    cur = conn.cursor()
+
+    cur.execute("SELECT ID FROM wp_posts WHERE post_type = 'potravina'")
+    post_ids = [row[0] for row in cur.fetchall()]
+
+    if not post_ids:
+        print("Nothing to purge.")
+        conn.close()
+        return
+
+    placeholders = ",".join(["%s"] * len(post_ids))
+
+    # Delete attachments linked to these posts
+    cur.execute(f"SELECT ID FROM wp_posts WHERE post_type = 'attachment' AND post_parent IN ({placeholders})", post_ids)
+    att_ids = [row[0] for row in cur.fetchall()]
+    all_ids = post_ids + att_ids
+
+    ph_all = ",".join(["%s"] * len(all_ids))
+    cur.execute(f"DELETE FROM wp_postmeta WHERE post_id IN ({ph_all})", all_ids)
+    cur.execute(f"DELETE FROM wp_term_relationships WHERE object_id IN ({ph_all})", all_ids)
+    cur.execute(f"DELETE FROM wp_posts WHERE ID IN ({ph_all})", all_ids)
+
+    conn.commit()
+    cur.close()
+    conn.close()
+    print(f"Purged {len(post_ids)} food items + {len(att_ids)} attachments.")
+
+
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--force", action="store_true", help="Delete all existing items before seeding")
+    args = parser.parse_args()
+
+    if args.force:
+        purge()
+
     items = load_items()
     if not items:
         print("No YAML files found in data/")
