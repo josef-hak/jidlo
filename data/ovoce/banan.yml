@@ -1,7 +1,9 @@
 nazev: Banán
 znacka:
-popis: "Čerstvý banán."
-obrazek:
+popis: "Čerstvý banán. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni:
+obrazky:
+  - imgs/banan.jpg
 nutrice:
   energie_kj: 394
   energie_kcal: 94

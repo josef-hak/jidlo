@@ -1,0 +1,18 @@
+nazev: Planton Coconut Vegangurt Natural
+znacka: Planton
+popis: "Veganský fermentovaný kokosový výrobek. Bez přidaného cukru, bez lepku, bez sóji, 100 % rostlinný."
+slozeni: "Extrakt z kokosu 96 % (voda, extrakt z kokosu), škrob, bílkovina z bobu obecného, veganské jogurtové kultury."
+obrazky:
+  - imgs/planton-vegangurt-produkt.jpg
+  - imgs/planton-vegangurt-nutrice.jpg
+  - imgs/planton-vegangurt-slozeni.jpg
+nutrice:
+  energie_kj: 377
+  energie_kcal: 91
+  bilkoviny: 1.0
+  sacharidy: 5.9
+  cukry: 0.9
+  vlaknina:
+  tuky: 7.0
+  nasycene_mk: 6.7
+  sul: 0.03

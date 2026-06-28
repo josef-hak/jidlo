@@ -1,0 +1,16 @@
+nazev: Rajče
+znacka:
+popis: "Čerstvé rajče. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni:
+obrazky:
+  - imgs/rajce.jpg
+nutrice:
+  energie_kj: 75
+  energie_kcal: 18
+  bilkoviny: 0.9
+  sacharidy: 2.6
+  cukry: 2.6
+  vlaknina: 1.2
+  tuky: 0.2
+  nasycene_mk: 0
+  sul: 0.01

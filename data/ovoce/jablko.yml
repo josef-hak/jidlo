@@ -1,0 +1,16 @@
+nazev: Jablko
+znacka:
+popis: "Čerstvé jablko. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni:
+obrazky:
+  - imgs/jablko.jpg
+nutrice:
+  energie_kj: 218
+  energie_kcal: 52
+  bilkoviny: 0.3
+  sacharidy: 12
+  cukry: 10
+  vlaknina: 2.4
+  tuky: 0.2
+  nasycene_mk: 0
+  sul: 0
