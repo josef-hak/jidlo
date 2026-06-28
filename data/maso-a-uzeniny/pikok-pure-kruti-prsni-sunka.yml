@@ -1,0 +1,17 @@
+nazev: Pikok Pure Krůtí prsní šunka 92%
+znacka: Pikok Pure (Lidl)
+popis: "Krůtí prsní šunka nejvyšší jakosti, 92 % krůtích prsou."
+slozeni: "92 % krůtí prsa, pitná voda, jedlá sůl, mangold, acerola, mrkev, rozmarýn, přírodní aroma z citrusů, zrací kultura."
+obrazky:
+  - imgs/pikok-kruti-prsni-produkt.jpg
+  - imgs/pikok-kruti-prsni-slozeni.jpg
+nutrice:
+  energie_kj: 355
+  energie_kcal: 84
+  bilkoviny: 19.1
+  sacharidy: 0.5
+  cukry: 0.1
+  vlaknina: 0.0
+  tuky: 0.6
+  nasycene_mk: 0.2
+  sul: 1.70

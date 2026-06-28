@@ -23,6 +23,15 @@ function jidlo_add_meta_boxes() {
     );
 
     add_meta_box(
+        'jidlo_slozeni',
+        'Složení',
+        'jidlo_slozeni_meta_box_html',
+        'potravina',
+        'normal',
+        'default'
+    );
+
+    add_meta_box(
         'jidlo_popis',
         'Popis',
         'jidlo_popis_meta_box_html',
@@ -58,6 +67,11 @@ function jidlo_nutri_meta_box_html($post) {
     echo '</tbody></table>';
 }
 
+function jidlo_slozeni_meta_box_html($post) {
+    $value = get_post_meta($post->ID, '_jidlo_slozeni', true);
+    echo '<textarea name="jidlo_slozeni" rows="3" class="widefat" placeholder="Složení produktu">' . esc_textarea($value) . '</textarea>';
+}
+
 function jidlo_popis_meta_box_html($post) {
     $value = get_post_meta($post->ID, '_jidlo_popis', true);
     echo '<textarea name="jidlo_popis" rows="2" maxlength="300" class="widefat" placeholder="Krátký popis potraviny (do 300 znaků)">' . esc_textarea($value) . '</textarea>';
@@ -88,6 +102,10 @@ function jidlo_save_meta($post_id) {
         } else {
             delete_post_meta($post_id, '_jidlo_' . $key);
         }
+    }
+
+    if (isset($_POST['jidlo_slozeni'])) {
+        update_post_meta($post_id, '_jidlo_slozeni', sanitize_textarea_field($_POST['jidlo_slozeni']));
     }
 
     if (isset($_POST['jidlo_popis'])) {

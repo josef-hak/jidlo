@@ -257,6 +257,7 @@ img { max-width: 100%; height: auto; display: block; }
     object-fit: cover;
 }
 
+
 .food-detail-info {
     flex: 1;
     min-width: 0;
@@ -322,6 +323,23 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 0.85rem;
     white-space: nowrap;
     color: var(--color-muted);
+}
+
+.food-detail-slozeni {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.food-detail-slozeni h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+.food-detail-slozeni p {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: 1.6;
 }
 
 .food-detail-notes {
@@ -575,6 +593,81 @@ img { max-width: 100%; height: auto; display: block; }
     background: var(--color-primary-dark);
     color: white;
     transform: scale(1.05);
+}
+
+/* === Gallery (in-place) === */
+.food-gallery {
+    border-top: 1px solid var(--color-border);
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.food-gallery-close {
+    display: inline-block;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.food-gallery-close:hover {
+    color: var(--color-primary);
+}
+
+.food-gallery-viewer {
+    position: relative;
+    background: var(--color-accent);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.food-gallery-viewer img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.food-gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.85);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    color: var(--color-text);
+}
+
+.food-gallery-nav:hover {
+    background: white;
+}
+
+.food-gallery-nav.prev { left: 0.5rem; }
+.food-gallery-nav.next { right: 0.5rem; }
+
+.food-gallery-counter {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+
+.food-detail-icon-wrap.has-gallery {
+    cursor: pointer;
+}
+
+.food-detail-icon-wrap.has-gallery:hover {
+    opacity: 0.85;
 }
 
 /* === 404 === */

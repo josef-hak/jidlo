@@ -1,0 +1,17 @@
+nazev: Pilos Tvaroh odtučněný
+znacka: Pilos (Lidl)
+popis: "Tvaroh odtučněný, obsah tuku v sušině maximálně 5 %."
+slozeni: "Tvaroh odtučněný."
+obrazky:
+  - imgs/pilos-tvaroh-produkt.jpg
+  - imgs/pilos-tvaroh-slozeni.jpg
+nutrice:
+  energie_kj: 283
+  energie_kcal: 67
+  bilkoviny: 12.0
+  sacharidy: 4.0
+  cukry: 4.0
+  vlaknina: 0
+  tuky: 0.5
+  nasycene_mk: 0.2
+  sul: 0.10

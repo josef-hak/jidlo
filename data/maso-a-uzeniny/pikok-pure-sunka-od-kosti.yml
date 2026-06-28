@@ -1,0 +1,17 @@
+nazev: Pikok Pure Šunka od kosti 96%
+znacka: Pikok Pure (Lidl)
+popis: "Vepřová šunka od kosti, uzená, nejvyšší jakosti, 96 % masa."
+slozeni: "96 % vepřová kýta, pitná voda, jedlá sůl, mangold, acerola, mrkev, rozmarýn, přírodní aroma z citrusů, zrací kultura, kouř z bukového dřeva."
+obrazky:
+  - imgs/pikok-sunka-od-kosti-produkt.jpg
+  - imgs/pikok-sunka-od-kosti-slozeni.jpg
+nutrice:
+  energie_kj: 734
+  energie_kcal: 176
+  bilkoviny: 18.5
+  sacharidy: 0.3
+  cukry: 0.1
+  vlaknina: 0.4
+  tuky: 11.1
+  nasycene_mk: 2.1
+  sul: 2.0

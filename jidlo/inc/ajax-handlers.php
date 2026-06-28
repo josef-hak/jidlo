@@ -65,6 +65,10 @@ function jidlo_handle_add_food() {
         update_post_meta($post_id, '_jidlo_popis', sanitize_textarea_field(mb_substr($_POST['food_description'], 0, 300)));
     }
 
+    if (!empty($_POST['food_slozeni'])) {
+        update_post_meta($post_id, '_jidlo_slozeni', sanitize_textarea_field($_POST['food_slozeni']));
+    }
+
     if (!empty($_POST['food_brand'])) {
         update_post_meta($post_id, '_jidlo_znacka', sanitize_text_field($_POST['food_brand']));
     }

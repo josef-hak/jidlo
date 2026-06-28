@@ -1,0 +1,17 @@
+nazev: Hollandia Originál selský jogurt 3,5%
+znacka: Hollandia
+popis: "Originál selský jogurt, zraje v kelímku, 3,5 % tuku."
+slozeni: "Mléko, mléčná bílkovina, jogurtová kultura, Bifidobacterium a Lactobacillus acidophilus."
+obrazky:
+  - imgs/hollandia-original-35-produkt.jpg
+  - imgs/hollandia-original-35-slozeni.jpg
+nutrice:
+  energie_kj: 279
+  energie_kcal: 67
+  bilkoviny: 3.5
+  sacharidy: 4.4
+  cukry: 4.4
+  vlaknina:
+  tuky: 3.8
+  nasycene_mk: 2.6
+  sul: 0.10

@@ -1,0 +1,17 @@
+nazev: Ajala Ekvádor Camino Verde 70%
+znacka: Ajala
+popis: "Single origin bean-to-bar čokoláda z ekvádorských kakaových bobů. 70 % kakaa, jemně praženo, mleto žulovými kameny."
+slozeni: "Kakaové boby, bio sušená třtinová šťáva. Obsah kakaového podílu: 70 %."
+obrazky:
+  - imgs/ajala-ekvador-70-produkt.jpg
+  - imgs/ajala-ekvador-70-slozeni.jpg
+nutrice:
+  energie_kj: 2461
+  energie_kcal: 588
+  bilkoviny: 7.3
+  sacharidy: 45.9
+  cukry: 33.5
+  vlaknina:
+  tuky: 41.1
+  nasycene_mk: 25.6
+  sul: 0

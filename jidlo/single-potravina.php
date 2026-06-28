@@ -4,9 +4,15 @@
 
 <a href="<?php echo esc_url(home_url('/')); ?>" class="back-link">&larr; Zpět na katalog</a>
 
+<?php
+$gallery_ids = get_post_meta(get_the_ID(), '_jidlo_gallery', true);
+$gallery = $gallery_ids ? explode(',', $gallery_ids) : [];
+$has_gallery = count($gallery) > 0;
+?>
+
 <div class="food-detail">
-    <div class="food-detail-header">
-        <div class="food-detail-icon-wrap">
+    <div class="food-detail-header" id="detail-header">
+        <div class="food-detail-icon-wrap<?php echo $has_gallery ? ' has-gallery' : ''; ?>" id="gallery-trigger">
             <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail('food-thumb'); ?>
             <?php else: ?>
@@ -37,7 +43,19 @@
         </div>
     </div>
 
-    <div class="food-detail-body">
+    <?php if ($has_gallery): ?>
+    <div class="food-gallery" id="food-gallery" style="display:none">
+        <button class="food-gallery-close" id="gallery-close">&larr; Zpět</button>
+        <div class="food-gallery-viewer">
+            <img id="gallery-img" src="" alt="">
+            <button class="food-gallery-nav prev" id="gallery-prev">&lsaquo;</button>
+            <button class="food-gallery-nav next" id="gallery-next">&rsaquo;</button>
+        </div>
+        <div class="food-gallery-counter" id="gallery-counter"></div>
+    </div>
+    <?php endif; ?>
+
+    <div class="food-detail-body" id="detail-body">
         <?php
         $d_bilk = floatval(get_post_meta(get_the_ID(), '_jidlo_bilkoviny', true));
         $d_sach = floatval(get_post_meta(get_the_ID(), '_jidlo_sacharidy', true));
@@ -56,7 +74,6 @@
             $p_nmk = $d_tuky > 0 ? ($d_nmk / $d_total * 100) : 0;
             $p_tuky_rest = $p_tuky - $p_nmk;
 
-            // Color map: key => [bg color for row, percentage]
             $color_map = [
                 'bilkoviny'  => ['#e05555', $p_bilk],
                 'tuky'       => ['#eebb44', $p_tuky],
@@ -148,6 +165,14 @@
         </div>
         <?php endif; ?>
 
+        <?php $slozeni = get_post_meta(get_the_ID(), '_jidlo_slozeni', true); ?>
+        <?php if ($slozeni): ?>
+            <div class="food-detail-slozeni">
+                <h3>Složení</h3>
+                <p><?php echo esc_html($slozeni); ?></p>
+            </div>
+        <?php endif; ?>
+
         <?php if (get_the_content()): ?>
             <div class="food-detail-notes">
                 <h3>Poznámky</h3>
@@ -162,6 +187,52 @@
         <?php endif; ?>
     </div>
 </div>
+
+<?php if ($has_gallery): ?>
+<script>
+(function() {
+    var urls = [<?php
+        $urls = [];
+        foreach ($gallery as $att_id) {
+            $url = wp_get_attachment_url(intval($att_id));
+            if ($url) $urls[] = '"' . esc_url($url) . '"';
+        }
+        echo implode(',', $urls);
+    ?>];
+    if (!urls.length) return;
+
+    var trigger = document.getElementById('gallery-trigger');
+    var galleryEl = document.getElementById('food-gallery');
+    var close = document.getElementById('gallery-close');
+    var header = document.getElementById('detail-header');
+    var img = document.getElementById('gallery-img');
+    var counter = document.getElementById('gallery-counter');
+    var prev = document.getElementById('gallery-prev');
+    var next = document.getElementById('gallery-next');
+    var idx = 0;
+
+    function show(i) {
+        idx = (i + urls.length) % urls.length;
+        img.src = urls[idx];
+        counter.textContent = (idx + 1) + ' / ' + urls.length;
+        prev.style.display = urls.length > 1 ? '' : 'none';
+        next.style.display = urls.length > 1 ? '' : 'none';
+    }
+
+    trigger.addEventListener('click', function() {
+        galleryEl.style.display = '';
+        show(0);
+    });
+
+    close.addEventListener('click', function() {
+        galleryEl.style.display = 'none';
+    });
+
+    prev.addEventListener('click', function() { show(idx - 1); });
+    next.addEventListener('click', function() { show(idx + 1); });
+})();
+</script>
+<?php endif; ?>
 
 <?php endwhile; ?>
 
