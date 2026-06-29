@@ -171,10 +171,16 @@ def scan(photos, model, kategorie, validate=True, data_dir="data"):
                      "cukry", "vlaknina", "tuky", "nasycene_mk", "sul"]:
             val = data["nutrice"].get(key)
             if val is not None:
-                # Ensure numeric
                 try:
-                    out["nutrice"][key] = float(val)
+                    # Sanitize: "4,4 g" → "4.4", "<0,5" → "0"
+                    s = str(val).strip()
+                    s = re.sub(r"\s*(g|kj|kcal|mg|ml)\s*$", "", s, flags=re.IGNORECASE)
+                    s = s.replace(",", ".")
+                    if s.startswith("<"):
+                        s = "0"
+                    out["nutrice"][key] = float(s)
                 except (ValueError, TypeError):
+                    print(f"  Warning: could not parse {key}={val!r}, skipping")
                     pass
 
     # Validate nutrition data
