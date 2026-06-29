@@ -64,7 +64,31 @@ def extract_yaml(text):
     return text
 
 
-def scan(photos, model, kategorie, data_dir="data"):
+def validate_nutrition(nutrice):
+    """Check if macro energy roughly matches declared kcal (B×4 + S×4 + T×9 ≈ kcal)."""
+    kcal = nutrice.get("energie_kcal", 0)
+    bilk = nutrice.get("bilkoviny", 0)
+    sach = nutrice.get("sacharidy", 0)
+    tuky = nutrice.get("tuky", 0)
+    vlak = nutrice.get("vlaknina", 0)
+
+    if not kcal:
+        return
+
+    computed = bilk * 4 + sach * 4 + tuky * 9 + vlak * 2
+    diff = abs(computed - kcal)
+    pct = diff / kcal * 100 if kcal else 0
+
+    print(f"\n  Validation: declared {kcal} kcal, computed {computed:.0f} kcal "
+          f"(B={bilk}×4 + S={sach}×4 + T={tuky}×9 + Vl={vlak}×2)")
+
+    if pct > 15:
+        print(f"  ⚠ WARNING: difference {diff:.0f} kcal ({pct:.0f}%) — check values manually!")
+    else:
+        print(f"  ✓ OK (difference {pct:.0f}%)")
+
+
+def scan(photos, model, kategorie, validate=True, data_dir="data"):
     """Send photos to vision model and generate YAML file."""
 
     # Build message with images
@@ -153,6 +177,10 @@ def scan(photos, model, kategorie, data_dir="data"):
                 except (ValueError, TypeError):
                     pass
 
+    # Validate nutrition data
+    if validate and out.get("nutrice"):
+        validate_nutrition(out["nutrice"])
+
     # Write YAML
     yml_path = os.path.join(cat_dir, f"{slug}.yml")
     with open(yml_path, "w", encoding="utf-8") as f:
@@ -167,10 +195,11 @@ def main():
     parser.add_argument("photos", nargs="+", help="Photo files (JPG)")
     parser.add_argument("--kategorie", "-k", required=True, help="Category slug (e.g. mlecne-vyrobky)")
     parser.add_argument("--model", "-m", default="qwen2.5vl:7b", help="Ollama model (default: qwen2.5vl:7b)")
+    parser.add_argument("--no-validate", action="store_true", help="Skip nutrition validation")
     parser.add_argument("--data-dir", default="data", help="Data directory (default: data)")
     args = parser.parse_args()
 
-    scan(args.photos, args.model, args.kategorie, args.data_dir)
+    scan(args.photos, args.model, args.kategorie, validate=not args.no_validate, data_dir=args.data_dir)
 
 
 if __name__ == "__main__":
