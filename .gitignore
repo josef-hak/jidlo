@@ -6,6 +6,7 @@ node_modules/
 public/
 resources/
 .hugo_build.lock
+.venv/
 content/potravina/
 static/imgs/food/
 fitko-example
