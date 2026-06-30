@@ -1,0 +1,17 @@
+nazev: Ajala Madagaskar Åkesson 70%
+znacka: Ajala
+popis: "Single origin bean-to-bar čokoláda z madagaskarských kakaových bobů, údolí Sambirano. 70 % kakaa."
+slozeni: "Bio kakaové boby, bio třtinový cukr. Obsah kakaového podílu 70 %."
+obrazky:
+  - imgs/ajala-madagaskar-produkt.jpg
+  - imgs/ajala-madagaskar-nutrice.jpg
+nutrice:
+  energie_kj: 2461
+  energie_kcal: 588
+  bilkoviny: 7.3
+  sacharidy: 45.9
+  cukry: 33.5
+  vlaknina:
+  tuky: 41.1
+  nasycene_mk: 25.6
+  sul: 0

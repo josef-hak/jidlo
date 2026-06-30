@@ -1,0 +1,17 @@
+nazev: Natural Pohanka lámanka
+znacka: Natural Jihlava
+popis: "Pohanka lámanka bez lepku. Pohankové zrno mechanicky loupané."
+slozeni: "Pohankové zrno mechanicky loupané."
+obrazky:
+  - imgs/natural-pohanka-lamanka-produkt.jpg
+  - imgs/natural-pohanka-lamanka-nutrice.jpg
+nutrice:
+  energie_kj: 1510
+  energie_kcal: 357
+  bilkoviny: 11.4
+  sacharidy: 69.6
+  cukry: 1.65
+  vlaknina: 2.73
+  tuky: 3.12
+  nasycene_mk: 0.62
+  sul: 0

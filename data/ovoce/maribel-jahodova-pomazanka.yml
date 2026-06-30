@@ -1,0 +1,18 @@
+nazev: Maribel Jahodová pomazánka
+znacka: Maribel (Lidl)
+popis: "Ovocná pomazánka, 75 % obsah ovoce. Pasterováno."
+slozeni: "75 % jahody, cukr, koncentrát citronové šťávy, želírující látka: pektiny."
+obrazky:
+  - imgs/maribel-jahodova-pomazanka-produkt.jpg
+  - imgs/maribel-jahodova-pomazanka-nutrice.jpg
+  - imgs/maribel-jahodova-pomazanka-slozeni.jpg
+nutrice:
+  energie_kj: 651
+  energie_kcal: 154
+  bilkoviny: 0.7
+  sacharidy: 34.4
+  cukry: 34.1
+  vlaknina: 2.2
+  tuky: 0.6
+  nasycene_mk: 0.1
+  sul: 0.01

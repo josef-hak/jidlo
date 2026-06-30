@@ -1,0 +1,18 @@
+nazev: Pilos BIO Mléko čerstvé plnotučné 4%
+znacka: Pilos (Lidl)
+popis: "Bio čerstvé plnotučné mléko, 4 % tuku."
+slozeni: "Čerstvé plnotučné mléko."
+obrazky:
+  - imgs/pilos-bio-mleko-produkt.jpg
+  - imgs/pilos-bio-mleko-nutrice.jpg
+  - imgs/pilos-bio-mleko-slozeni.jpg
+nutrice:
+  energie_kj: 286
+  energie_kcal: 68
+  bilkoviny: 3.3
+  sacharidy: 4.8
+  cukry: 4.8
+  vlaknina: 0
+  tuky: 4.0
+  nasycene_mk: 2.5
+  sul: 0.10

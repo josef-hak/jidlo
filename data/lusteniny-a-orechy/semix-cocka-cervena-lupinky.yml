@@ -1,0 +1,17 @@
+nazev: Semix Klíčené čočka červená lupínky
+znacka: Semix
+popis: "Jemné klíčené lupínky z červené čočky, bez lepku."
+slozeni:
+obrazky:
+  - imgs/semix-cocka-cervena-lupinky-produkt.jpg
+  - imgs/semix-cocka-cervena-lupinky-nutrice.jpg
+nutrice:
+  energie_kj: 1515
+  energie_kcal: 359
+  bilkoviny: 25
+  sacharidy: 53
+  cukry: 2.2
+  vlaknina: 16
+  tuky: 1.6
+  nasycene_mk: 0.3
+  sul: 0.02

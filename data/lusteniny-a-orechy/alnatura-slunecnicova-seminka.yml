@@ -1,0 +1,18 @@
+nazev: Alnatura Slunečnicová semínka BIO
+znacka: Alnatura
+popis: "Bio slunečnicová semínka, 500 g."
+slozeni: "Slunečnicová semínka z ekologického zemědělství."
+obrazky:
+  - imgs/alnatura-slunecnicova-seminka-produkt.jpg
+  - imgs/alnatura-slunecnicova-seminka-nutrice.jpg
+  - imgs/alnatura-slunecnicova-seminka-slozeni.jpg
+nutrice:
+  energie_kj: 2526
+  energie_kcal: 610
+  bilkoviny: 27
+  sacharidy: 12
+  cukry: 0
+  vlaknina: 6.3
+  tuky: 49
+  nasycene_mk: 5.4
+  sul: 0.01

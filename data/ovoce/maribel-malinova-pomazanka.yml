@@ -1,0 +1,18 @@
+nazev: Maribel Malinová pomazánka
+znacka: Maribel (Lidl)
+popis: "Ovocná pomazánka, 75 % obsah ovoce. Pasterováno."
+slozeni: "75 % maliny, cukr, želírující látka: pektiny, koncentrát citronové šťávy, částečně z koncentrátu."
+obrazky:
+  - imgs/maribel-malinova-pomazanka-produkt.jpg
+  - imgs/maribel-malinova-pomazanka-nutrice.jpg
+  - imgs/maribel-malinova-pomazanka-slozeni.jpg
+nutrice:
+  energie_kj: 659
+  energie_kcal: 155
+  bilkoviny: 0.8
+  sacharidy: 34.5
+  cukry: 33.9
+  vlaknina: 2.6
+  tuky: 0.5
+  nasycene_mk: 0.1
+  sul: 0.03

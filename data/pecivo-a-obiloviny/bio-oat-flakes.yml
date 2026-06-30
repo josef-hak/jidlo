@@ -1,0 +1,17 @@
+nazev: Bio Organic Oat Flakes Fine
+znacka: Bio Organic (Lidl)
+popis: "Bio celozrnné ovesné vločky jemné, 100 % whole grain, high fibre."
+slozeni: "100 % celozrnné ovesné vločky."
+obrazky:
+  - imgs/bio-oat-flakes-produkt.jpg
+  - imgs/bio-oat-flakes-nutrice.jpg
+nutrice:
+  energie_kj: 1532
+  energie_kcal: 364
+  bilkoviny: 12.3
+  sacharidy: 55.1
+  cukry: 1.0
+  vlaknina: 12
+  tuky: 6.9
+  nasycene_mk: 1.0
+  sul: 0.01

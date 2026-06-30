@@ -1,0 +1,19 @@
+nazev: Skyr Bohušovická mlékárna Natur
+znacka: Bohušovická mlékárna
+popis: "Skyr, kysaný mléčný výrobek, islandská tradice. Vysoký obsah proteinu, 0,1 % tuku."
+slozeni: "Odtučněné mléko, mlékarenské kultury. Tuk maximálně 0,1 %. Sušina nejméně 14 %."
+obrazky:
+  - imgs/skyr-bohusovicka-produkt.jpg
+  - imgs/skyr-bohusovicka-nutrice.jpg
+  - imgs/skyr-bohusovicka-slozeni.jpg
+  - imgs/skyr-bohusovicka-slozeni2.jpg
+nutrice:
+  energie_kj: 259
+  energie_kcal: 61
+  bilkoviny: 12.0
+  sacharidy: 3.0
+  cukry: 3.0
+  vlaknina:
+  tuky: 0.1
+  nasycene_mk: 0.06
+  sul: 0.1

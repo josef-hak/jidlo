@@ -1,0 +1,17 @@
+nazev: Ajala Tanzanie Kokoa Kamili 70%
+znacka: Ajala
+popis: "Single origin bean-to-bar čokoláda z tanzanských kakaových bobů. 70 % kakaa."
+slozeni: "Bio kakaové boby, bio sušená třtinová šťáva. Obsah kakaového podílu 70 %."
+obrazky:
+  - imgs/ajala-tanzanie-produkt.jpg
+  - imgs/ajala-tanzanie-nutrice.jpg
+nutrice:
+  energie_kj: 2461
+  energie_kcal: 588
+  bilkoviny: 8.6
+  sacharidy: 45.9
+  cukry: 33.5
+  vlaknina:
+  tuky: 41.1
+  nasycene_mk: 25.61
+  sul: 0.079

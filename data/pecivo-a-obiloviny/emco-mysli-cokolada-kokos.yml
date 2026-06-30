@@ -1,0 +1,18 @@
+nazev: Emco Super Mysli křupavé čokoláda & kokos
+znacka: Emco
+popis: "Křupavé mysli bez přidaného cukru, z českého ovsa, s čokoládou a kokosem."
+slozeni: "Celozrnné ovesné vločky 45 %, vláknina z kořene čekanky 19 %, pšeničná mouka, řepkový olej, pšeničko-kukuřičná krupka, plátky kokosu 4 %, pšeničko-kukuřičný extrudát, čokoláda 3 %, kakaový prášek 2,7 %, strouhaný kokos 2 %, přírodní kokosové aroma, antioxidanty."
+obrazky:
+  - imgs/emco-mysli-cokolada-produkt.jpg
+  - imgs/emco-mysli-cokolada-nutrice.jpg
+  - imgs/emco-mysli-cokolada-slozeni.jpg
+nutrice:
+  energie_kj: 1635
+  energie_kcal: 391
+  bilkoviny: 8.7
+  sacharidy: 42
+  cukry: 2.9
+  vlaknina: 20
+  tuky: 17
+  nasycene_mk: 5.7
+  sul: 0.05

@@ -1,0 +1,18 @@
+nazev: Emco Super Mysli křupavé s jahodami
+znacka: Emco
+popis: "Křupavé mysli bez přidaného cukru, z českého ovsa, s jahodami."
+slozeni: "Celozrnné ovesné vločky 49 %, vláknina z kořene čekanky 20 %, řepkový olej, pšeničná mouka, pšeničko-kukuřičná krupka, pšeničko-kukuřičný extrudát, strouhaný kokos 2,1 %, kousky mrazem sušených jahod 1,5 %, přírodní aroma, antioxidanty."
+obrazky:
+  - imgs/emco-mysli-jahody-produkt.jpg
+  - imgs/emco-mysli-jahody-nutrice.jpg
+  - imgs/emco-mysli-jahody-slozeni.jpg
+nutrice:
+  energie_kj: 1568
+  energie_kcal: 374
+  bilkoviny: 8.6
+  sacharidy: 46
+  cukry: 4.6
+  vlaknina: 19
+  tuky: 13
+  nasycene_mk: 2.4
+  sul: 0.04

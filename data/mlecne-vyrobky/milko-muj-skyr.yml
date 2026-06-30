@@ -1,0 +1,17 @@
+nazev: Milko Můj Skyr bílý
+znacka: Milko
+popis: "Skyr, kysaný mléčný výrobek, 0 % tuku, bohatý na bílkoviny."
+slozeni: "Mléko, jogurtová kultura s Bifidobacterium BB-12."
+obrazky:
+  - imgs/milko-skyr-produkt.jpg
+  - imgs/milko-skyr-nutrice.jpg
+nutrice:
+  energie_kj: 283
+  energie_kcal: 67
+  bilkoviny: 12
+  sacharidy: 4.0
+  cukry: 4.0
+  vlaknina:
+  tuky: 0.3
+  nasycene_mk: 0.2
+  sul: 0.08

@@ -1,0 +1,17 @@
+nazev: Semix Klíčené pohankové lupínky
+znacka: Semix
+popis: "Jemné klíčené pohankové lupínky, bez lepku."
+slozeni:
+obrazky:
+  - imgs/semix-pohankove-lupinky-produkt.jpg
+  - imgs/semix-pohankove-lupinky-nutrice.jpg
+nutrice:
+  energie_kj: 1648
+  energie_kcal: 389
+  bilkoviny: 14
+  sacharidy: 74
+  cukry: 0.6
+  vlaknina: 3.8
+  tuky: 3.4
+  nasycene_mk: 0.6
+  sul: 0.01

@@ -1,0 +1,18 @@
+nazev: Maribel Meruňková pomazánka
+znacka: Maribel (Lidl)
+popis: "Ovocná pomazánka, 75 % obsah ovoce. Pasterováno."
+slozeni: "75 % meruňky, cukr, koncentrát citronové šťávy, želírující látka: pektiny, částečně z koncentrátu."
+obrazky:
+  - imgs/maribel-merunkova-pomazanka-produkt.jpg
+  - imgs/maribel-merunkova-pomazanka-nutrice.jpg
+  - imgs/maribel-merunkova-pomazanka-slozeni.jpg
+nutrice:
+  energie_kj: 670
+  energie_kcal: 158
+  bilkoviny: 0.6
+  sacharidy: 35.5
+  cukry: 35.0
+  vlaknina: 2.7
+  tuky: 0.6
+  nasycene_mk: 0.1
+  sul: 0.02

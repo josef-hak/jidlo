@@ -1,0 +1,17 @@
+nazev: Lipánek Maxi
+znacka: Madeta
+popis: "Smetanový krém bez laktózy. Tuk v sušině min. 30 %."
+slozeni: "55 % tvarohu, 35 % smetany, cukr, enzym laktáza."
+obrazky:
+  - imgs/lipanek-maxi-produkt.jpg
+  - imgs/lipanek-maxi-nutrice.jpg
+nutrice:
+  energie_kj: 771
+  energie_kcal: 185
+  bilkoviny: 7.4
+  sacharidy: 14
+  cukry: 14
+  vlaknina:
+  tuky: 11
+  nasycene_mk: 7.3
+  sul: 0.08
