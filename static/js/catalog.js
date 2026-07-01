@@ -13,6 +13,43 @@
         return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
+    // --- URL state ---
+    function pushState() {
+        var params = new URLSearchParams();
+        var q = searchInput.value.trim();
+        if (q) params.set('q', q);
+        if (activeCategory) params.set('cat', activeCategory);
+        if (sortKey) {
+            params.set('sort', sortKey);
+            if (sortAsc) params.set('asc', '1');
+        }
+        var str = params.toString();
+        var url = window.location.pathname + (str ? '?' + str : '');
+        history.replaceState(null, '', url);
+    }
+
+    function readState() {
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q') || '';
+        searchInput.value = q;
+
+        activeCategory = params.get('cat') || '';
+        pills.forEach(function (p) {
+            var cat = p.getAttribute('data-category');
+            p.classList.toggle('active', cat === activeCategory);
+        });
+        if (activeCategory && filtersEl) {
+            filtersEl.style.display = '';
+            filterToggle.classList.add('active');
+        }
+
+        sortKey = params.get('sort') || '';
+        sortAsc = params.get('asc') === '1';
+        updateOptions();
+        updateToggleLabel();
+    }
+
+    // --- Filter & Sort ---
     function filterCards() {
         var query = normalize(searchInput.value.trim());
 
@@ -25,6 +62,8 @@
 
             card.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
         });
+
+        pushState();
     }
 
     function sortCards() {
@@ -119,6 +158,7 @@
                 sortCards();
             }
 
+            pushState();
             sortMenu.classList.remove('open');
         });
     });
@@ -133,4 +173,9 @@
             filterCards();
         });
     });
+
+    // Restore state from URL on load
+    readState();
+    filterCards();
+    if (sortKey) sortCards();
 })();
