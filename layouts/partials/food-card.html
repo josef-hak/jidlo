@@ -15,7 +15,7 @@
     {{ $p_tuky = mul (div $fat $total) 100 }}
 {{ end }}
 
-<div class="food-card" data-category="{{ $cat_slug }}" data-search="{{ .Title }} {{ .Params.znacka }} {{ .Params.popis }} {{ .Params.slozeni }}">
+<div class="food-card" data-category="{{ $cat_slug }}" data-search="{{ .Title }} {{ .Params.znacka }} {{ .Params.popis }} {{ .Params.slozeni }}" data-kcal="{{ default 0 .Params.energie_kcal }}" data-bilk="{{ default 0 .Params.bilkoviny }}" data-sach="{{ default 0 .Params.sacharidy }}" data-tuky="{{ default 0 .Params.tuky }}">
     <a href="{{ .RelPermalink }}">
         <div class="food-card-visual">
             <div class="food-card-image">

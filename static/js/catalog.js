@@ -2,7 +2,10 @@
     var searchInput = document.getElementById('food-search');
     var cards = document.querySelectorAll('.food-card');
     var pills = document.querySelectorAll('.filter-pill');
+    var grid = document.querySelector('.catalog-grid');
     var activeCategory = '';
+    var sortKey = '';
+    var sortAsc = false;
 
     if (!searchInput || !cards.length) return;
 
@@ -24,16 +27,101 @@
         });
     }
 
-    var toggleBtn = document.getElementById('filter-toggle');
+    function sortCards() {
+        if (!sortKey || !grid) return;
+        var arr = Array.prototype.slice.call(cards);
+        arr.sort(function (a, b) {
+            var va = parseFloat(a.getAttribute('data-' + sortKey)) || 0;
+            var vb = parseFloat(b.getAttribute('data-' + sortKey)) || 0;
+            return sortAsc ? va - vb : vb - va;
+        });
+        arr.forEach(function (card) { grid.appendChild(card); });
+    }
+
+    // Filter toggle
+    var filterToggle = document.getElementById('filter-toggle');
     var filtersEl = document.getElementById('catalog-filters');
 
-    if (toggleBtn && filtersEl) {
-        toggleBtn.addEventListener('click', function () {
+    if (filterToggle && filtersEl) {
+        filterToggle.addEventListener('click', function () {
             var open = filtersEl.style.display !== 'none';
             filtersEl.style.display = open ? 'none' : '';
-            toggleBtn.classList.toggle('active', !open);
+            filterToggle.classList.toggle('active', !open);
         });
     }
+
+    // Sort dropdown
+    var sortToggle = document.getElementById('sort-toggle');
+    var sortMenu = document.getElementById('sort-menu');
+    var sortOptions = document.querySelectorAll('.sort-option');
+    var sortLabels = { kcal: 'kcal', bilk: 'bílk.', sach: 'sach.', tuky: 'tuky' };
+
+    function updateToggleLabel() {
+        if (!sortKey) {
+            sortToggle.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4v16m0 0l-3-3m3 3l3-3M17 20V4m0 0l3 3m-3-3l-3 3"/></svg>';
+            sortToggle.classList.remove('active');
+        } else {
+            var arrow = sortAsc ? '↑' : '↓';
+            sortToggle.innerHTML = '<span class="sort-label">' + sortLabels[sortKey] + ' ' + arrow + '</span>';
+            sortToggle.classList.add('active');
+        }
+    }
+
+    function updateOptions() {
+        sortOptions.forEach(function (opt) {
+            var key = opt.getAttribute('data-sort');
+            var label = opt.textContent.replace(/ [↑↓]$/, '');
+            if (key === sortKey) {
+                opt.classList.add('active');
+                opt.innerHTML = label + ' <span class="sort-arrow">' + (sortAsc ? '↑' : '↓') + '</span>';
+            } else {
+                opt.classList.remove('active');
+                opt.textContent = label;
+            }
+        });
+    }
+
+    if (sortToggle && sortMenu) {
+        sortToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            sortMenu.classList.toggle('open');
+        });
+
+        document.addEventListener('click', function () {
+            sortMenu.classList.remove('open');
+        });
+
+        sortMenu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    sortOptions.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+            var key = this.getAttribute('data-sort');
+
+            if (sortKey === key) {
+                if (sortAsc) {
+                    sortKey = '';
+                    sortAsc = false;
+                } else {
+                    sortAsc = true;
+                }
+            } else {
+                sortKey = key;
+                sortAsc = false;
+            }
+
+            updateOptions();
+            updateToggleLabel();
+
+            if (sortKey) {
+                sortCards();
+            }
+
+            sortMenu.classList.remove('open');
+        });
+    });
 
     searchInput.addEventListener('input', filterCards);
 
