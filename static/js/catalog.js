@@ -24,6 +24,17 @@
         });
     }
 
+    var toggleBtn = document.getElementById('filter-toggle');
+    var filtersEl = document.getElementById('catalog-filters');
+
+    if (toggleBtn && filtersEl) {
+        toggleBtn.addEventListener('click', function () {
+            var open = filtersEl.style.display !== 'none';
+            filtersEl.style.display = open ? 'none' : '';
+            toggleBtn.classList.toggle('active', !open);
+        });
+    }
+
     searchInput.addEventListener('input', filterCards);
 
     pills.forEach(function (pill) {

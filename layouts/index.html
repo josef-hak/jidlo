@@ -1,8 +1,12 @@
 {{ define "main" }}
 
 <div class="catalog-header">
-    <h1>Katalog potravin</h1>
-    <input type="search" class="catalog-search" id="food-search" placeholder="Hledat potravinu...">
+    <div class="catalog-search-row">
+        <input type="search" class="catalog-search" id="food-search" placeholder="Hledat potravinu...">
+        <button class="catalog-filter-toggle" id="filter-toggle">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+        </button>
+    </div>
 
     {{ $categories := dict
         "maso-a-uzeniny" "Maso a uzeniny"
@@ -16,7 +20,7 @@
         "veganske" "Veganské"
         "ostatni" "Ostatní"
     }}
-    <div class="catalog-filters">
+    <div class="catalog-filters" id="catalog-filters" style="display:none">
         <button class="filter-pill active" data-category="">Vše</button>
         {{ range $slug, $name := $categories }}
         <button class="filter-pill" data-category="{{ $slug }}"><span class="cat-icon" style="--icon:url(/imgs/cat/{{ $slug }}.svg)"></span> {{ $name }}</button>
