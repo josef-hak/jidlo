@@ -1,0 +1,18 @@
+nazev: Pilos High Protein Yogurt Natural
+znacka: Pilos (Lidl)
+popis: "Jogurt s vysokým obsahem bílkovin, 36 g na kelímek. Low-fat, bez laktózy."
+slozeni: "Jogurt bílý z odstředěného mléka, s vysokým obsahem bílkovin, 90 % odstředěné mléko, mléčná bílkovina, enzym laktáza."
+obrazky:
+  - imgs/pilos-hp-yogurt-produkt.jpg
+  - imgs/pilos-hp-yogurt-nutrice.jpg
+  - imgs/pilos-hp-yogurt-slozeni.jpg
+nutrice:
+  energie_kj: 284
+  energie_kcal: 67
+  bilkoviny: 11.0
+  sacharidy: 3.6
+  cukry: 3.6
+  vlaknina: 0
+  tuky: 0.4
+  nasycene_mk: 0.3
+  sul: 0.22

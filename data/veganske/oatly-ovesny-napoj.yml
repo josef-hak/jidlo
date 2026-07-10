@@ -1,0 +1,18 @@
+nazev: Oatly Ovesný nápoj Original
+znacka: Oatly
+popis: "Pěnivý ovesný nápoj s přídavkem vitamínů a minerálů. UHT. Neobsahuje mléko a sóju."
+slozeni: "Voda, oves 10 %, řepkový olej, regulátor kyselosti (hydrogenfosforečnan draselný), minerální látky (uhličitan vápenatý, jodid draselný), jedlá sůl, vitamíny (D2, riboflavin, B12)."
+obrazky:
+  - imgs/oatly-ovesny-napoj-produkt.jpg
+  - imgs/oatly-ovesny-napoj-nutrice.jpg
+  - imgs/oatly-ovesny-napoj-slozeni.jpg
+nutrice:
+  energie_kj: 257
+  energie_kcal: 61
+  bilkoviny: 1.1
+  sacharidy: 7.1
+  cukry: 3.4
+  vlaknina: 0.8
+  tuky: 3.0
+  nasycene_mk: 0.3
+  sul: 0.10

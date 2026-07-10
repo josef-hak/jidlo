@@ -1,0 +1,18 @@
+nazev: Pilos High Protein Skyr Natur
+znacka: Pilos (Lidl)
+popis: "Skyr natur, 42 g bílkovin na kelímek. Bez tuku, bez přidaného cukru."
+slozeni: "Odstředěné mléko, mlékarenské kultury."
+obrazky:
+  - imgs/pilos-hp-skyr-produkt.jpg
+  - imgs/pilos-hp-skyr-nutrice.jpg
+  - imgs/pilos-hp-skyr-slozeni.jpg
+nutrice:
+  energie_kj: 259
+  energie_kcal: 61
+  bilkoviny: 12.0
+  sacharidy: 3.0
+  cukry: 3.0
+  vlaknina: 0
+  tuky: 0.1
+  nasycene_mk: 0
+  sul: 0.10

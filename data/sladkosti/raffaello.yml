@@ -1,0 +1,17 @@
+nazev: Raffaello
+znacka: Ferrero
+popis: "Křupavá oplatka s kokosem, celou mandlí a kokosovým krémem."
+slozeni: "Sušený kokos 25,5 %, rostlinné tuky (palmový, shea), cukr, mandle 8 %, sušené odstředěné mléko, pšeničná mouka, manikový škrob, aroma, emulgátor: lecitin (sójové), kypřicí látka (hydrogenhličitan sodný), jedlá sůl."
+obrazky:
+  - imgs/raffaello-produkt.jpg
+  - imgs/raffaello-nutrice.jpg
+nutrice:
+  energie_kj: 2600
+  energie_kcal: 627
+  bilkoviny: 7.4
+  sacharidy: 38.6
+  cukry: 33.6
+  vlaknina:
+  tuky: 48.3
+  nasycene_mk: 29.5
+  sul: 0.267

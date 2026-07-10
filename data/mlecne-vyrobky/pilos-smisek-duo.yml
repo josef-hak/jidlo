@@ -1,0 +1,18 @@
+nazev: Pilos Smíšek Duo
+znacka: Pilos (Lidl)
+popis: "Tvarohový krém čerstvý vanilkový a kakaový, s vysokým obsahem bílkovin."
+slozeni: "70 % tvaroh, smetana, cukr, 0,75 % kakao, přírodní vanilkové aroma. Certifikováno Rainforest Alliance."
+obrazky:
+  - imgs/pilos-smisek-duo-produkt.jpg
+  - imgs/pilos-smisek-duo-nutrice.jpg
+  - imgs/pilos-smisek-duo-slozeni.jpg
+nutrice:
+  energie_kj: 664
+  energie_kcal: 159
+  bilkoviny: 9.2
+  sacharidy: 12.3
+  cukry: 12.3
+  vlaknina:
+  tuky: 8.0
+  nasycene_mk: 5.2
+  sul: 0.10
