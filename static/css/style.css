@@ -162,6 +162,169 @@ img { max-width: 100%; height: auto; display: block; }
     border-color: var(--color-primary);
 }
 
+.catalog-rozpis-toggle {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    cursor: pointer;
+    color: var(--color-muted);
+    transition: all 0.15s;
+}
+
+.catalog-rozpis-toggle:hover,
+.catalog-rozpis-toggle.active {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Rozpis panel */
+.rozpis-panel {
+    margin-top: 0.75rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+}
+
+.rozpis-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.rozpis-table th {
+    padding: 0.3rem 0.4rem;
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.rozpis-table th:nth-child(2) {
+    text-align: left;
+}
+
+.rozpis-row td {
+    padding: 0.35rem 0.4rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.rozpis-td-thumb {
+    width: 28px;
+}
+
+.rozpis-td-thumb img {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+}
+
+.rozpis-td-name {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rozpis-td-g {
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+}
+
+.rozpis-th-g {
+    text-align: center;
+}
+
+.rozpis-th-macro {
+    text-align: center;
+    min-width: 40px;
+}
+
+.rozpis-macro {
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.rozpis-macro-val {
+    display: block;
+}
+
+.rozpis-total {
+    background: var(--color-accent);
+}
+
+.rozpis-total td {
+    border-bottom: none;
+}
+
+.rozpis-item-remove {
+    background: none;
+    border: none;
+    color: var(--color-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 0.2rem;
+    line-height: 1;
+}
+
+.rozpis-item-remove:hover {
+    color: var(--color-primary);
+}
+
+/* Card rozpis input */
+.food-card-rozpis {
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.5rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-accent);
+}
+
+.rozpis-active .food-card-rozpis {
+    display: flex;
+}
+
+.rozpis-input {
+    width: 60px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    text-align: center;
+    background: var(--color-surface);
+}
+
+.rozpis-add {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.rozpis-add:hover {
+    background: var(--color-primary-dark);
+}
+
 .catalog-sort-wrap {
     position: relative;
     flex-shrink: 0;
