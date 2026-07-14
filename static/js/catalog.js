@@ -119,12 +119,14 @@
 
     function updateToggleLabel() {
         if (!sortKey) {
-            sortToggle.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4v16m0 0l-3-3m3 3l3-3M17 20V4m0 0l3 3m-3-3l-3 3"/></svg>';
+            sortToggle.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4v16m0 0l-3-3m3 3l3-3M17 20V4m0 0l3 3m-3-3l-3 3"/></svg>';
             sortToggle.classList.remove('active');
+            sortToggle.classList.remove('has-label');
         } else {
             var arrow = sortAsc ? '↑' : '↓';
             sortToggle.innerHTML = '<span class="sort-label">' + sortLabels[sortKey] + ' ' + arrow + '</span>';
             sortToggle.classList.add('active');
+            sortToggle.classList.add('has-label');
         }
     }
 
