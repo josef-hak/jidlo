@@ -64,14 +64,15 @@
             {{ with $brand }}<div class="food-card-brand">{{ . }}</div>{{ end }}
             <div class="food-card-macros">
                 <div><span class="macro-value">{{ with $kcal }}{{ . }}{{ else }}—{{ end }}</span><span class="macro-label">kcal</span></div>
-                <div style="background:#e0555515"><span class="macro-value">{{ if gt $protein 0.0 }}{{ $protein }}{{ else }}—{{ end }}</span><span class="macro-label">bílk.</span></div>
-                <div style="background:#5588dd15"><span class="macro-value">{{ if gt $carbs 0.0 }}{{ $carbs }}{{ else }}—{{ end }}</span><span class="macro-label">sach.</span></div>
-                <div style="background:#eebb4415"><span class="macro-value">{{ if gt $fat 0.0 }}{{ $fat }}{{ else }}—{{ end }}</span><span class="macro-label">tuky</span></div>
+                <div style="background:#e0555515"><span class="macro-value">{{ if gt $protein 0.0 }}{{ $protein }}{{ else }}—{{ end }}</span><span class="macro-label">b</span></div>
+                <div style="background:#5588dd15"><span class="macro-value">{{ if gt $carbs 0.0 }}{{ $carbs }}{{ else }}—{{ end }}</span><span class="macro-label">s</span></div>
+                <div style="background:#eebb4415"><span class="macro-value">{{ if gt $fat 0.0 }}{{ $fat }}{{ else }}—{{ end }}</span><span class="macro-label">t</span></div>
             </div>
         </div>
     </a>
     <div class="food-card-rozpis">
-        <input type="number" class="rozpis-input" inputmode="decimal" placeholder="g" min="0" step="1">
+        <input type="number" class="rozpis-input" inputmode="decimal" placeholder="100" min="0" step="1">
+        <span class="rozpis-unit">g</span>
         <button class="rozpis-add" title="Přidat">✓</button>
     </div>
 </div>

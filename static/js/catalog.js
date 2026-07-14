@@ -115,7 +115,7 @@
     var sortToggle = document.getElementById('sort-toggle');
     var sortMenu = document.getElementById('sort-menu');
     var sortOptions = document.querySelectorAll('.sort-option');
-    var sortLabels = { kcal: 'kcal', bilk: 'bílk.', sach: 'sach.', tuky: 'tuky' };
+    var sortLabels = { kcal: 'kcal', bilk: 'b', sach: 's', tuky: 't' };
 
     function updateToggleLabel() {
         if (!sortKey) {
@@ -253,9 +253,9 @@
         var html = '<table class="rozpis-table"><thead><tr>' +
             '<th></th><th></th><th class="rozpis-th-g">g</th>' +
             '<th class="rozpis-th-macro">kcal</th>' +
-            '<th class="rozpis-th-macro" style="color:#e05555">bílk.</th>' +
-            '<th class="rozpis-th-macro" style="color:#5588dd">sach.</th>' +
-            '<th class="rozpis-th-macro" style="color:#eebb44">tuky</th>' +
+            '<th class="rozpis-th-macro" style="color:#e05555">b</th>' +
+            '<th class="rozpis-th-macro" style="color:#5588dd">s</th>' +
+            '<th class="rozpis-th-macro" style="color:#eebb44">t</th>' +
             '<th></th></tr></thead><tbody>';
 
         rozpisItems.forEach(function (item, i) {

@@ -200,7 +200,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .rozpis-table th {
-    padding: 0.3rem 0.4rem;
+    padding: 0.25rem 0.25rem;
     font-weight: 500;
     font-size: 0.7rem;
     color: var(--color-muted);
@@ -213,7 +213,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .rozpis-row td {
-    padding: 0.35rem 0.4rem;
+    padding: 0.3rem 0.25rem;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -230,7 +230,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .rozpis-td-name {
-    max-width: 140px;
+    max-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -248,14 +248,14 @@ img { max-width: 100%; height: auto; display: block; }
 
 .rozpis-th-macro {
     text-align: center;
-    min-width: 40px;
+    min-width: 32px;
 }
 
 .rozpis-macro {
     text-align: center;
     border-radius: 4px;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .rozpis-macro-val {
@@ -288,10 +288,16 @@ img { max-width: 100%; height: auto; display: block; }
 .food-card-rozpis {
     display: none;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.3rem;
     padding: 0.35rem 0.5rem;
     border-top: 1px solid var(--color-border);
     background: var(--color-accent);
+}
+
+.rozpis-unit {
+    font-size: 0.8rem;
+    color: var(--color-muted);
 }
 
 .rozpis-active .food-card-rozpis {
