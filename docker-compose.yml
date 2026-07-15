@@ -11,7 +11,7 @@ services:
   hugo:
     image: hugomods/hugo:reg
     ports:
-      - "8080:1313"
+      - "8787:1313"
     volumes:
       - .:/src
-    command: hugo server --bind 0.0.0.0 --port 1313 --baseURL http://localhost:8080 --appendPort=false
+    command: hugo server --bind 0.0.0.0 --port 1313 --baseURL http://localhost:8787 --appendPort=false
