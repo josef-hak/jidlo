@@ -1,0 +1,18 @@
+nazev: Kešu ořechy
+znacka:
+popis: "Jádra kešu ořechů, nepražená. Přirozený zdroj bílkovin a hořčíku."
+slozeni: "Jádra kešu ořechů, nepražená."
+obrazky:
+  - imgs/kesu-orechy-produkt.jpg
+  - imgs/kesu-orechy-nutrice.jpg
+  - imgs/kesu-orechy-slozeni.jpg
+nutrice:
+  energie_kj: 2488
+  energie_kcal: 600
+  bilkoviny: 20.5
+  sacharidy: 19.8
+  cukry: 6.5
+  vlaknina: 5.2
+  tuky: 47.6
+  nasycene_mk: 9.0
+  sul: 0.02

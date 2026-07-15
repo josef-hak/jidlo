@@ -1,0 +1,17 @@
+nazev: Bio Chia semínka
+znacka: Velká Pecka (Rohlik.cz)
+popis: "Bio chia semínka. Země původu: Uganda."
+slozeni: "Chia semínka z ekologického zemědělství."
+obrazky:
+  - imgs/bio-chia-seminka-produkt.jpg
+  - imgs/bio-chia-seminka-nutrice.jpg
+nutrice:
+  energie_kj: 1832
+  energie_kcal: 444
+  bilkoviny: 27
+  sacharidy: 12
+  cukry: 0.2
+  vlaknina:
+  tuky: 31
+  nasycene_mk: 3.8
+  sul: 0.01

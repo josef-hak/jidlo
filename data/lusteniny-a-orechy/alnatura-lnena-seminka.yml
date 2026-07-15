@@ -1,0 +1,17 @@
+nazev: Alnatura Lněná semínka drcená BIO
+znacka: Alnatura
+popis: "Bio lněná semínka drcená. Používejte pouze k vaření a pečení, nekonzumujte syrové."
+slozeni: "Semínka lněná drcená z ekologického zemědělství."
+obrazky:
+  - imgs/alnatura-lnena-seminka-produkt.jpg
+  - imgs/alnatura-lnena-seminka-nutrice.jpg
+nutrice:
+  energie_kj: 2224
+  energie_kcal: 539
+  bilkoviny: 22
+  sacharidy: 3
+  cukry: 1
+  vlaknina:
+  tuky: 43
+  nasycene_mk: 5.3
+  sul: 0.15

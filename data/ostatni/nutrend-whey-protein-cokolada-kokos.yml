@@ -1,0 +1,18 @@
+nazev: Nutrend 100% Whey Protein Čokoláda+Kokos
+znacka: Nutrend
+popis: "Syrovátkový protein, doplněk stravy se sladidly. 75 g bílkovin na 100 g."
+slozeni: "65 % syrovátkový proteinový izolát (obsahuje slunečnicový lecitin), 24 % syrovátkový proteinový koncentrát (obsahuje slunečnicový lecitin), kakaové aroma, bezlepková pšeničná vláknina, stabilizátory akáciová a xanthanová guma, protispékavá látka oxid křemičitý, chlorid sodný, směs trávicích enzymů Digezyme, sladidla sukralóza a steviol-glykosidy."
+obrazky:
+  - imgs/nutrend-whey-protein-produkt.jpg
+  - imgs/nutrend-whey-protein-nutrice.jpg
+  - imgs/nutrend-whey-protein-slozeni.jpg
+nutrice:
+  energie_kj: 1607
+  energie_kcal: 380
+  bilkoviny: 75
+  sacharidy: 7.6
+  cukry: 5
+  vlaknina: 3.2
+  tuky: 4.8
+  nasycene_mk: 3
+  sul: 1.6

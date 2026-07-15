@@ -1,0 +1,17 @@
+nazev: Vilgain 100% Whey Protein Cinnamon Roll
+znacka: Vilgain
+popis: "Grass-fed syrovátkový protein ze skotu z pastvin. Sladidlo pouze stevie, bez umělých barviv a zahušťovadel."
+slozeni: "Ultrafiltrovaný syrovátkový proteinový koncentrát (mléko, emulgátor: slunečnicový lecitin) 96 %, přírodní aroma, mletá skořice 1,2 %, sladidlo: steviol-glykosidy ze stevie."
+obrazky:
+  - imgs/vilgain-whey-protein-produkt.jpg
+  - imgs/vilgain-whey-protein-nutrice.jpg
+nutrice:
+  energie_kj: 1655
+  energie_kcal: 393
+  bilkoviny: 75
+  sacharidy: 8.8
+  cukry: 2.7
+  vlaknina:
+  tuky: 6.0
+  nasycene_mk: 0.9
+  sul: 0.44

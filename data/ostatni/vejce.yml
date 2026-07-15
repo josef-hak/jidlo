@@ -1,0 +1,16 @@
+nazev: Vejce slepičí
+znacka:
+popis: "Slepičí vejce. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni:
+obrazky:
+  - imgs/vejce-produkt.jpg
+nutrice:
+  energie_kj: 596
+  energie_kcal: 143
+  bilkoviny: 12.7
+  sacharidy: 0.6
+  cukry: 0.6
+  vlaknina: 0
+  tuky: 9.7
+  nasycene_mk: 2.8
+  sul: 0.37
