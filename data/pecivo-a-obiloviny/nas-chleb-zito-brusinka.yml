@@ -1,0 +1,16 @@
+nazev: Náš Chléb Žito - Brusinka
+znacka: Náš Chléb
+popis: "Žitný chléb s brusinkami. Výživné žitné zrno s jemnou sladkostí brusinek."
+slozeni: "Mouka žitná, brusinky sušené, mouka pšeničná, cukr, sůl jemná, droždí, voda."
+obrazky:
+  - imgs/nas-chleb-zito-brusinka-produkt.jpg
+nutrice:
+  energie_kj: 1025
+  energie_kcal: 242
+  bilkoviny: 6.0
+  sacharidy: 48
+  cukry: 12
+  vlaknina: 5.5
+  tuky: 1.5
+  nasycene_mk: 0.2
+  sul: 1.2

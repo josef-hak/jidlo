@@ -1,0 +1,16 @@
+nazev: Kuřecí stehno pečené
+znacka:
+popis: "Kuřecí stehno pečené, s kůží. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni:
+obrazky:
+  - imgs/kureci-stehno-pecene-produkt.jpg
+nutrice:
+  energie_kj: 941
+  energie_kcal: 225
+  bilkoviny: 25
+  sacharidy: 3.5
+  cukry: 0.05
+  vlaknina: 0.2
+  tuky: 12.3
+  nasycene_mk: 4.2
+  sul: 0

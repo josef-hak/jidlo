@@ -1,0 +1,17 @@
+nazev: Houska s mákem Nývlt
+znacka:
+popis: "Pšeničná houska s mákem. Nutriční hodnoty dle KalorickéTabulky.cz."
+slozeni: "Mouka pšeničná, rostlinný olej, diapol (pšeničná mouka, pšeničná sladová mouka, emulgátor E472e, kyselina askorbová, enzymy, sušené mléko), droždí, cukr, sůl. Posyp: mák, sůl+kmín."
+obrazky:
+  - imgs/houska-s-makem-produkt.jpg
+  - imgs/houska-s-makem-slozeni.jpg
+nutrice:
+  energie_kj: 1151
+  energie_kcal: 272
+  bilkoviny: 8.6
+  sacharidy: 51.5
+  cukry: 3.0
+  vlaknina: 2.5
+  tuky: 3.1
+  nasycene_mk: 0.7
+  sul: 1.3
