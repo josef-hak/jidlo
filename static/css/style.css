@@ -270,6 +270,41 @@ img { max-width: 100%; height: auto; display: block; }
     border-bottom: none;
 }
 
+.rozpis-td-arrows {
+    width: 20px;
+    text-align: center;
+    padding: 0 0.1rem !important;
+}
+
+.rozpis-arrow {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-muted);
+    font-size: 0.7rem;
+    line-height: 1;
+    padding: 0;
+}
+
+.rozpis-arrow:hover {
+    color: var(--color-primary);
+}
+
+.rozpis-th-edit {
+    width: 20px;
+}
+
+.rozpis-edit-g {
+    width: 45px;
+    padding: 0.15rem 0.2rem;
+    font-size: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    text-align: center;
+    background: var(--color-surface);
+}
+
 .rozpis-item-remove {
     background: none;
     border: none;

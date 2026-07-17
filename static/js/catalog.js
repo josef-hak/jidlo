@@ -211,6 +211,7 @@
         rozpisActive = !rozpisActive;
         grid.classList.toggle('rozpis-active', rozpisActive);
         rozpisToggle.classList.toggle('active', rozpisActive);
+        if (rozpisItems.length) renderRozpis();
     }
 
     function macroCell(val, color) {
@@ -250,29 +251,49 @@
             nutKeys.forEach(function (k) { totals[k] += item[k] || 0; });
         });
 
+        var editCol = rozpisActive ? '<th class="rozpis-th-edit"></th>' : '';
         var html = '<table class="rozpis-table"><thead><tr>' +
+            editCol +
             '<th></th><th></th><th class="rozpis-th-g">g</th>' +
             '<th class="rozpis-th-macro">kcal</th>' +
             '<th class="rozpis-th-macro" style="color:#e05555">b</th>' +
             '<th class="rozpis-th-macro" style="color:#5588dd">s</th>' +
             '<th class="rozpis-th-macro" style="color:#eebb44">t</th>' +
-            '<th></th></tr></thead><tbody>';
+            (rozpisActive ? '<th></th>' : '') +
+            '</tr></thead><tbody>';
 
         rozpisItems.forEach(function (item, i) {
+            var arrows = '';
+            if (rozpisActive) {
+                arrows = '<td class="rozpis-td-arrows">' +
+                    (i > 0 ? '<button class="rozpis-arrow" data-idx="' + i + '" data-dir="up">↑</button>' : '') +
+                    (i < rozpisItems.length - 1 ? '<button class="rozpis-arrow" data-idx="' + i + '" data-dir="down">↓</button>' : '') +
+                    '</td>';
+            }
+
+            var gramsCell;
+            if (rozpisActive) {
+                gramsCell = '<td class="rozpis-td-g"><input type="number" class="rozpis-edit-g" data-idx="' + i + '" value="' + item.grams + '" inputmode="decimal" min="0" step="1"></td>';
+            } else {
+                gramsCell = '<td class="rozpis-td-g">' + item.grams + '</td>';
+            }
+
             html += '<tr class="rozpis-row">' +
+                arrows +
                 '<td class="rozpis-td-thumb"><img src="' + item.thumb + '" alt=""></td>' +
                 '<td class="rozpis-td-name">' + item.title + '</td>' +
-                '<td class="rozpis-td-g">' + item.grams + '</td>' +
+                gramsCell +
                 macroCell(Math.round(item.kcal), '#ffffff') +
                 macroCell(item.bilk.toFixed(1), '#e05555') +
                 macroCell(item.sach.toFixed(1), '#5588dd') +
                 macroCell(item.tuky.toFixed(1), '#eebb44') +
-                '<td><button class="rozpis-item-remove" data-idx="' + i + '">×</button></td>' +
+                (rozpisActive ? '<td><button class="rozpis-item-remove" data-idx="' + i + '">×</button></td>' : '') +
                 '</tr>';
         });
 
         // Summary row
         html += '<tr class="rozpis-row rozpis-total">' +
+            (rozpisActive ? '<td></td>' : '') +
             '<td class="rozpis-td-thumb">' + donutSvg(totals.bilk, totals.sach, totals.tuky, 28) + '</td>' +
             '<td class="rozpis-td-name"><strong>Celkem</strong></td>' +
             '<td class="rozpis-td-g"></td>' +
@@ -280,17 +301,47 @@
             macroCell(totals.bilk.toFixed(1), '#e05555') +
             macroCell(totals.sach.toFixed(1), '#5588dd') +
             macroCell(totals.tuky.toFixed(1), '#eebb44') +
-            '<td></td></tr>';
+            (rozpisActive ? '<td></td>' : '') +
+            '</tr>';
 
         html += '</tbody></table>';
 
         rozpisPanel.innerHTML = html;
 
+        // Event: remove
         rozpisPanel.querySelectorAll('.rozpis-item-remove').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 rozpisItems.splice(parseInt(this.getAttribute('data-idx')), 1);
                 renderRozpis();
                 pushState();
+            });
+        });
+
+        // Event: move up/down
+        rozpisPanel.querySelectorAll('.rozpis-arrow').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var idx = parseInt(this.getAttribute('data-idx'));
+                var dir = this.getAttribute('data-dir');
+                var target = dir === 'up' ? idx - 1 : idx + 1;
+                var tmp = rozpisItems[idx];
+                rozpisItems[idx] = rozpisItems[target];
+                rozpisItems[target] = tmp;
+                renderRozpis();
+                pushState();
+            });
+        });
+
+        // Event: edit grams
+        rozpisPanel.querySelectorAll('.rozpis-edit-g').forEach(function (input) {
+            input.addEventListener('change', function () {
+                var idx = parseInt(this.getAttribute('data-idx'));
+                var newGrams = parseFloat(this.value);
+                if (newGrams > 0) {
+                    rozpisItems[idx].grams = newGrams;
+                    recalcItem(rozpisItems[idx]);
+                    renderRozpis();
+                    pushState();
+                }
             });
         });
     }
@@ -300,13 +351,21 @@
         var title = card.getAttribute('data-title');
         var slug = card.getAttribute('data-slug');
         var thumb = card.getAttribute('data-thumb');
-        var item = { title: title, slug: slug, grams: grams, thumb: thumb };
+        var per100 = {};
         nutKeys.forEach(function (k) {
-            item[k] = (parseFloat(card.getAttribute('data-' + k)) || 0) * grams / 100;
+            per100[k] = parseFloat(card.getAttribute('data-' + k)) || 0;
         });
+        var item = { title: title, slug: slug, grams: grams, thumb: thumb, per100: per100 };
+        recalcItem(item);
         rozpisItems.push(item);
         renderRozpis();
         pushState();
+    }
+
+    function recalcItem(item) {
+        nutKeys.forEach(function (k) {
+            item[k] = item.per100[k] * item.grams / 100;
+        });
     }
 
     if (rozpisToggle) {
