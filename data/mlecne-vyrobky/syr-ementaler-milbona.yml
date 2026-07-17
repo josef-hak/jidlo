@@ -1,6 +1,9 @@
 nazev: Sýr Emmentaler Milbona
 znacka: Milbona (Lidl)
-popis: "Ementál, sýr plátky. Obsah tuku v sušině min. 45 %."
+popis: |
+  Ementál, sýr plátky. Obsah tuku v sušině min. 45 %.
+
+  Plátek: 26g
 slozeni: "Pasterované mléko, jedlá sůl, mikrobiální syřidlo, sýrařské kultury (obsahují mléko)."
 obrazky:
   - imgs/milbona-emmentaler-produkt.jpg
