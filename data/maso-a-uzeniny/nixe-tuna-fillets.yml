@@ -1,0 +1,18 @@
+nazev: Nixe Tuňák filety ve vlastní šťávě
+znacka: Nixe (Lidl)
+popis: "Tuňák filety v přírodním nálevu. MSC certifikace, přirozeně vysoký obsah bílkovin."
+slozeni: "76,9 % tuňák pruhovaný, pitná voda, jedlá sůl."
+obrazky:
+  - imgs/nixe-tuna-fillets-produkt.jpg
+  - imgs/nixe-tuna-fillets-nutrice.jpg
+  - imgs/nixe-tuna-fillets-slozeni.jpg
+nutrice:
+  energie_kj: 468
+  energie_kcal: 111
+  bilkoviny: 26.0
+  sacharidy: 0
+  cukry: 0
+  vlaknina: 0
+  tuky: 0.7
+  nasycene_mk: 0
+  sul: 0.90

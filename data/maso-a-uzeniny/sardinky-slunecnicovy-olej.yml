@@ -1,0 +1,17 @@
+nazev: Sardinky ve slunečnicovém oleji
+znacka: Nixe (Lidl)
+popis: "Sardinky s kůží a kostmi, bez hlavy a ocasu, kuchané, ve slunečnicovém oleji. Přirozeně vysoký obsah bílkovin."
+slozeni: "72 % sardinka obecná (Sardina pilchardus), 27 % slunečnicový olej, jedlá sůl."
+obrazky:
+  - imgs/sardinky-slunecnicovy-olej-produkt.jpg
+  - imgs/sardinky-slunecnicovy-olej-nutrice.jpg
+nutrice:
+  energie_kj: 1221
+  energie_kcal: 294
+  bilkoviny: 22.2
+  sacharidy: 0
+  cukry: 0
+  vlaknina: 0
+  tuky: 22.8
+  nasycene_mk: 5.9
+  sul: 1.00

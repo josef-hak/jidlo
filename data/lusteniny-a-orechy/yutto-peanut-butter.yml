@@ -1,0 +1,18 @@
+nazev: Yutto 100% Peanut Butter Smooth
+znacka: Yutto
+popis: "Arašídový krém (máslo) ze 100 % pražených arašídů. Bez přidaného cukru, soli a oleje."
+slozeni: "100 % loupané pražené arašídy."
+obrazky:
+  - imgs/yutto-peanut-butter-produkt.jpg
+  - imgs/yutto-peanut-butter-nutrice.jpg
+  - imgs/yutto-peanut-butter-slozeni.jpg
+nutrice:
+  energie_kj: 2646
+  energie_kcal: 639
+  bilkoviny: 27
+  sacharidy: 10
+  cukry: 5.0
+  vlaknina: 7.0
+  tuky: 53
+  nasycene_mk: 7.0
+  sul: 0
