@@ -1,6 +1,17 @@
 services:
-  web:
-    build: .
-    restart: unless-stopped
+  build-data:
+    image: python:3.12-slim
+    volumes:
+      - .:/src
+    working_dir: /src
+    command: sh -c 'pip install --quiet pyyaml pillow && python build.py'
+    profiles:
+      - build
+
+  hugo:
+    image: hugomods/hugo:reg
     ports:
-      - 8787:80
+      - 8787:1313
+    volumes:
+      - .:/src
+    command: hugo server --bind 0.0.0.0 --port 1313 --baseURL http://localhost:8787 --appendPort=false

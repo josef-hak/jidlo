@@ -8,7 +8,7 @@ Osobní web pro evidenci potravin s nutričními hodnotami. Staticky generováno
 # 1. Generovat content z YAML dat
 docker compose --profile build run --rm build-data
 
-# 2. Spustit dev server
+# 2. Spustit dev server (hot reload)
 docker compose up hugo
 ```
 
