@@ -27,7 +27,7 @@
             {{ end }}
 
             {{ with .Params.popis }}
-                <p class="food-detail-description">{{ . }}</p>
+                <p class="food-detail-description">{{ . | replaceRE "\n" "<br>" | safeHTML }}</p>
             {{ end }}
         </div>
     </div>
@@ -35,7 +35,7 @@
     {{ with .Params.slozeni }}
         <div class="food-detail-slozeni">
             <h3>Složení</h3>
-            <p>{{ . }}</p>
+            <p>{{ . | replaceRE "\n" "<br>" | safeHTML }}</p>
         </div>
     {{ end }}
 

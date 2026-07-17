@@ -95,11 +95,17 @@ def build():
         ]
         if item.get("znacka"):
             fm_lines.append(f'znacka: "{item["znacka"]}"')
-        if item.get("popis"):
-            fm_lines.append(f'popis: "{item["popis"]}"')
-        if item.get("slozeni"):
-            slozeni = item["slozeni"].replace('"', '\\"')
-            fm_lines.append(f'slozeni: "{slozeni}"')
+        for field in ["popis", "slozeni"]:
+            val = item.get(field)
+            if val:
+                val = val.strip()
+                if "\n" in val:
+                    fm_lines.append(f"{field}: |")
+                    for line in val.split("\n"):
+                        fm_lines.append(f"  {line}")
+                else:
+                    escaped = val.replace('"', '\\"')
+                    fm_lines.append(f'{field}: "{escaped}"')
 
         fm_lines.append(f'kategorie: "{cat_name}"')
         fm_lines.append(f'kategorie_slug: "{cat_dir}"')
