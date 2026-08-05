@@ -1,0 +1,17 @@
+nazev: Jamón Serrano Reserva
+znacka: Esteban Espuña (Lidl)
+popis: "Španělská šunka, sušená vzduchem, krájená. Doba zrání 13 měsíců. 100 g vyrobeno ze 159 g masa."
+slozeni: "Vepřové maso, jedlá sůl, dextróza, konzervanty: dusičnan draselný, dusitan sodný."
+obrazky:
+  - imgs/jamon-serrano-produkt.jpg
+  - imgs/jamon-serrano-nutrice.jpg
+nutrice:
+  energie_kj: 984
+  energie_kcal: 235
+  bilkoviny: 29.5
+  sacharidy: 0.3
+  cukry: 0.3
+  vlaknina: 0
+  tuky: 12.9
+  nasycene_mk: 4.2
+  sul: 3.60

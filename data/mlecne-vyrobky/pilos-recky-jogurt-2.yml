@@ -1,0 +1,18 @@
+nazev: Pilos Jogurt řeckého typu bílý 2%
+znacka: Pilos (Lidl)
+popis: "Jogurt řeckého typu, bílý, 2 % tuku. Nutri-Score A."
+slozeni: "Zahuštěné mléko, jogurtové kultury."
+obrazky:
+  - imgs/pilos-recky-jogurt-produkt.jpg
+  - imgs/pilos-recky-jogurt-nutrice.jpg
+  - imgs/pilos-recky-jogurt-slozeni.jpg
+nutrice:
+  energie_kj: 253
+  energie_kcal: 60
+  bilkoviny: 6.0
+  sacharidy: 4.5
+  cukry: 4.5
+  vlaknina: 0
+  tuky: 2.0
+  nasycene_mk: 1.3
+  sul: 0.15
