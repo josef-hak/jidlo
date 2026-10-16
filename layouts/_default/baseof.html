@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/imgs/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="{{ "imgs/favicon.svg" | relURL }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     <title>{{ if .IsHome }}{{ .Site.Title }} — Katalog potravin{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
 </head>
 <body>
 
 <header class="site-header">
-    <a href="/" class="site-title">{{ .Site.Title }}</a>
+    <a href="{{ site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
     {{ if .IsHome }}
     <div class="site-header-actions">
         <button class="header-btn" id="filter-toggle" title="Kategorie">

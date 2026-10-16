@@ -4,15 +4,15 @@
 {{ $images := .Params.obrazky }}
 {{ $has_gallery := and $images (gt (len $images) 0) }}
 
-<a href="/" class="back-link">&larr; Zpět na katalog</a>
+<a href="{{ site.Home.RelPermalink }}" class="back-link">&larr; Zpět na katalog</a>
 
 <div class="food-detail cat-detail-{{ $cat_slug }}">
     <div class="food-detail-header" id="detail-header">
         <div class="food-detail-icon-wrap{{ if $has_gallery }} has-gallery{{ end }}" id="gallery-trigger">
             {{ if $images }}
-                <img src="{{ index $images 0 }}" alt="{{ .Title }}">
+                <img src="{{ index $images 0 | relURL }}" alt="{{ .Title }}">
             {{ else }}
-                <img src="/imgs/{{ $cat_slug }}.svg" alt="">
+                <img src="{{ printf "imgs/%s.svg" $cat_slug | relURL }}" alt="">
             {{ end }}
         </div>
         <div class="food-detail-info">
@@ -23,7 +23,7 @@
             {{ end }}
 
             {{ with .Params.kategorie }}
-                <span class="food-detail-category cat-{{ $cat_slug }}"><span class="cat-icon" style="--icon:url(/imgs/cat/{{ $cat_slug }}.svg)"></span> {{ . }}</span>
+                <span class="food-detail-category cat-{{ $cat_slug }}"><span class="cat-icon" style="--icon:url({{ printf "imgs/cat/%s.svg" $cat_slug | relURL }})"></span> {{ . }}</span>
             {{ end }}
 
             {{ with .Params.popis }}
@@ -151,7 +151,7 @@
 {{ if $has_gallery }}
 <script>
 (function() {
-    var urls = [{{ range $i, $img := $images }}{{ if $i }},{{ end }}"{{ $img }}"{{ end }}];
+    var urls = [{{ range $i, $img := $images }}{{ if $i }},{{ end }}"{{ $img | relURL }}"{{ end }}];
     if (!urls.length) return;
 
     var trigger = document.getElementById('gallery-trigger');

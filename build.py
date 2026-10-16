@@ -80,7 +80,7 @@ def build():
             # Full size (max 800px, readable text)
             full_name = f"{base}.jpg"
             resize_image(src, os.path.join(STATIC_IMG_DIR, full_name), FULL_MAX)
-            hugo_images.append(f"/imgs/food/{full_name}")
+            hugo_images.append(f"imgs/food/{full_name}")
 
             # Thumbnail for first image only (300x300 square crop)
             if i == 0:

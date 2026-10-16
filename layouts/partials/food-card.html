@@ -19,7 +19,7 @@
      data-search="{{ .Title }} {{ .Params.znacka }} {{ .Params.popis }} {{ .Params.slozeni }}"
      data-title="{{ .Title }}"
      data-slug="{{ .File.ContentBaseName }}"
-     data-thumb="{{ with $thumb }}{{ . }}{{ else }}/imgs/{{ $cat_slug }}.svg{{ end }}"
+     data-thumb="{{ with $thumb }}{{ . | relURL }}{{ else }}{{ printf "imgs/%s.svg" $cat_slug | relURL }}{{ end }}"
      data-kcal="{{ default 0 .Params.energie_kcal }}"
      data-kj="{{ default 0 .Params.energie_kj }}"
      data-bilk="{{ default 0 .Params.bilkoviny }}"
@@ -31,9 +31,9 @@
         <div class="food-card-visual">
             <div class="food-card-image">
                 {{ if $thumb }}
-                    <img src="{{ $thumb }}" alt="{{ .Title }}" loading="lazy">
+                    <img src="{{ $thumb | relURL }}" alt="{{ .Title }}" loading="lazy">
                 {{ else }}
-                    <img src="/imgs/{{ $cat_slug }}.svg" alt="" loading="lazy">
+                    <img src="{{ printf "imgs/%s.svg" $cat_slug | relURL }}" alt="" loading="lazy">
                 {{ end }}
             </div>
             {{ if gt $total 0.0 }}

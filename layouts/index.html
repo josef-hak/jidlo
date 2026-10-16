@@ -23,7 +23,7 @@
     <div class="catalog-filters" id="catalog-filters" style="display:none">
         <button class="filter-pill active" data-category="">Vše</button>
         {{ range $slug, $name := $categories }}
-        <button class="filter-pill" data-category="{{ $slug }}"><span class="cat-icon" style="--icon:url(/imgs/cat/{{ $slug }}.svg)"></span> {{ $name }}</button>
+        <button class="filter-pill" data-category="{{ $slug }}"><span class="cat-icon" style="--icon:url({{ printf "imgs/cat/%s.svg" $slug | relURL }})"></span> {{ $name }}</button>
         {{ end }}
     </div>
 </div>
@@ -41,5 +41,5 @@
     {{ end }}
 </div>
 
-<script src="/js/catalog.js"></script>
+<script src="{{ "js/catalog.js" | relURL }}"></script>
 {{ end }}
